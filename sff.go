@@ -1,12 +1,11 @@
 package sff
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
 
-	"github.com/mickep76/go-sff/sff8079"
-	"github.com/mickep76/go-sff/sff8636"
+	"github.com/bluecmd/go-sff/sff8079"
+	"github.com/bluecmd/go-sff/sff8636"
 )
 
 // Type of eeprom module.
@@ -21,20 +20,20 @@ const (
 var ErrUnknownType = errors.New("unknown type")
 
 type Module struct {
-	Type             Type `json:"type"`
-	*sff8079.Sff8079 `json:"-"`
-	*sff8636.Sff8636 `json:"-"`
+	Type             Type
+	*sff8079.Sff8079
+	*sff8636.Sff8636
 }
 
 type module Module
 
 type moduleSff8079 struct {
-	Type Type `json:"type"`
+	Type Type
 	*sff8079.Sff8079
 }
 
 type moduleSff8636 struct {
-	Type Type `json:"type"`
+	Type Type
 	*sff8636.Sff8636
 }
 
@@ -58,43 +57,6 @@ func (m *Module) StringCol() string {
 	return ""
 }
 
-func (m *Module) MarshalJSON() ([]byte, error) {
-	switch m.Type {
-	case TypeSff8079:
-		return json.Marshal(moduleSff8079{Type: m.Type, Sff8079: m.Sff8079})
-	case TypeSff8636:
-		return json.Marshal(moduleSff8636{Type: m.Type, Sff8636: m.Sff8636})
-	}
-	return nil, ErrUnknownType
-}
-
-func (m *Module) UnmarshalJSON(in []byte) error {
-	mod := &module{}
-	err := json.Unmarshal(in, mod)
-	if err != nil {
-		return err
-	}
-	m.Type = mod.Type
-
-	switch mod.Type {
-	case TypeSff8079:
-		s := &sff8079.Sff8079{}
-		if err := json.Unmarshal(in, s); err != nil {
-			return err
-		}
-		m.Sff8079 = s
-		return nil
-	case TypeSff8636:
-		s := &sff8636.Sff8636{}
-		if err := json.Unmarshal(in, s); err != nil {
-			return err
-		}
-		m.Sff8636 = s
-		return nil
-	}
-	return ErrUnknownType
-}
-
 func GetType(eeprom []byte) (Type, error) {
 	if len(eeprom) < 256 {
 		return TypeUnknown, fmt.Errorf("eeprom size to small needs to be 256 bytes or larger got: %d bytes", len(eeprom))
@@ -111,7 +73,24 @@ func GetType(eeprom []byte) (Type, error) {
 	return TypeUnknown, fmt.Errorf("eeprom unknown type")
 }
 
-func Decode(eeprom []byte) (*Module, error) {
+func readI2C(f string) ([]byte, error) {
+	// 0x50 and 0x51 SFP port
+	i, err := NewI2C(f, 0x50)
+	if err != nil {
+		return nil, err
+	}
+	i.Write([]byte{0x00})
+	b := make([]byte, 256)
+	i.Read(b)
+	return b, nil
+}
+
+func Read(f string) (*Module, error) {
+	eeprom, err := readI2C(f)
+	if err != nil {
+		return nil, err
+	}
+
 	t, err := GetType(eeprom)
 	if err != nil {
 		return nil, err

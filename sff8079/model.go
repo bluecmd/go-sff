@@ -5,7 +5,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"gitlab.trading.imc.intra/go/go-sff/common"
+	"github.com/bluecmd/go-sff/common"
 )
 
 const (

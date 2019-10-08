@@ -5,7 +5,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/mickep76/go-sff/common"
+	"github.com/bluecmd/go-sff/common"
 )
 
 const (
