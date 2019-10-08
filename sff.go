@@ -79,6 +79,7 @@ func readI2C(f string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer i.Close()
 	i.Write([]byte{0x00})
 	b := make([]byte, 256)
 	i.Read(b)
