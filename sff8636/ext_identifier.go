@@ -14,6 +14,9 @@ const (
 	PwrClass3    = (2 << 6)
 	PwrClass4    = (3 << 6)
 
+	ExtPwrClass8Mask = 0x20
+	ExtPwrClass8     = (1 << 5)
+
 	ClieCodeMask = 0x10
 	NoClieCode   = (0 << 4)
 	ClieCode     = (1 << 4)
@@ -64,18 +67,56 @@ var extPwrClassNames = map[byte]string{
 
 type ExtIdentifier byte
 
+// GetPowerClass returns a single power class (1-8) based on the SFF-8636 specification
+func (e ExtIdentifier) GetPowerClass() string {
+	b := byte(e)
+
+	// Check for Power Class 8 first (highest priority)
+	if b&ExtPwrClass8Mask == ExtPwrClass8 {
+		return "Power Class 8"
+	}
+
+	// Check extended power classes (5, 6, 7)
+	extPwrClass := b & ExtPwrClassMask
+	if extPwrClass != ExtPwrClassUnused {
+		switch extPwrClass {
+		case ExtPwrClass5:
+			return "Power Class 5"
+		case ExtPwrClass6:
+			return "Power Class 6"
+		case ExtPwrClass7:
+			return "Power Class 7"
+		}
+	}
+
+	// Base power classes (1, 2, 3, 4)
+	basePwrClass := b & PwrClassMask
+	switch basePwrClass {
+	case PwrClass1:
+		return "Power Class 1"
+	case PwrClass2:
+		return "Power Class 2"
+	case PwrClass3:
+		return "Power Class 3"
+	case PwrClass4:
+		// If ExtPwrClassUnused, translate to Power Class 4
+		if extPwrClass == ExtPwrClassUnused {
+			return "Power Class 4"
+		}
+		// Otherwise, the extended power class takes precedence
+		return "Power Class 4"
+	}
+
+	return "Power Class Unknown"
+}
+
 func (e ExtIdentifier) List() []string {
 	b := byte(e)
 	s := []string{
-		pwrClassNames[b&PwrClassMask],
+		e.GetPowerClass(),
 		clieCodeNames[b&ClieCodeMask],
 		fmt.Sprintf("%s, %s", cdrInTxNames[b&CdrInTxMask], cdrInRxNames[b&CdrInRxMask]),
 	}
-
-	if b&ExtPwrClassMask != ExtPwrClassUnused {
-		s = append(s, extPwrClassNames[b&ExtPwrClassMask])
-	}
-
 	return s
 }
 

@@ -1,9 +1,8 @@
 [36mIdentifier [128]                                  [0m : [32m0x11 (QSFP28)[0m
 [36mExtended Identifier [129]                         [0m : [32m0xcf[0m
-[36mExtended Identifier Description                   [0m : [32m3.5 W max. power consumption (or Power Classes 5, 6 or 7)
+[36mExtended Identifier Description                   [0m : [32mPower Class 7
                                                    : No CLEI code present
-                                                   : CDR in TX, CDR in RX
-                                                   : 5.0 W max. power consumption[0m
+                                                   : CDR in TX, CDR in RX[0m
 [36mConnector [130]                                   [0m : [32m0x07 (LC)[0m
 [36mTransceiver Codes [131-138]                       [0m : [32m0x80 0x00 0x00 0x00 0x00 0x00 0x00 0x00[0m
 [36mTransceiver Type                                  [0m : [33m[0m
