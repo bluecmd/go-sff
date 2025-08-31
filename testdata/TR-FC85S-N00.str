@@ -18,6 +18,7 @@ Control Status [93]                                : 0x00
     High Power Class 8 Enabled:     false
     High Power Classes 5-7 Enabled: false
     Low Power Mode:                 false
+    Power Override:                 false
 Identifier [128]                                   : 0x11 (QSFP28)
 Extended Identifier [129]                          : 0xcc
 Extended Identifier Description                    : Power Class 4

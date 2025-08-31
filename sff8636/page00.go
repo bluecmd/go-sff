@@ -216,25 +216,23 @@ const (
 	SwResetMask ControlStatus = 0x80
 	SwReset     ControlStatus = 0x80
 
-	// Bit 6: Reserved
+	// Bit 6-4: Reserved
 
-	// Bit 5: High Power Class Enable (Class 8)
-	HighPowerClass8Mask ControlStatus = 0x20
-	HighPowerClass8     ControlStatus = 0x20
+	// Bit 3: High Power Class Enable (Class 8)
+	HighPowerClass8Mask ControlStatus = 0x08
+	HighPowerClass8     ControlStatus = 0x08
 
-	// Bit 4: High Power Class Enable (Classes 5-7)
-	HighPowerClass5to7Mask ControlStatus = 0x10
-	HighPowerClass5to7     ControlStatus = 0x10
-
-	// Bit 3: Reserved
-
-	// Bit 2: Reserved
+	// Bit 2: High Power Class Enable (Classes 5-7)
+	HighPowerClass5to7Mask ControlStatus = 0x04
+	HighPowerClass5to7     ControlStatus = 0x04
 
 	// Bit 1: Power set (Low Power Mode)
 	PowerSetMask ControlStatus = 0x02
 	PowerSet     ControlStatus = 0x02
 
-	// Bit 0: Reserved
+	// Bit 0: Power override
+	PowerOverrideMask ControlStatus = 0x01
+	PowerOverride     ControlStatus = 0x01
 )
 
 func (c ControlStatus) IsSoftwareReset() bool {
@@ -253,12 +251,17 @@ func (c ControlStatus) IsLowPowerMode() bool {
 	return c&PowerSetMask == PowerSet
 }
 
+func (c ControlStatus) IsPowerOverride() bool {
+	return c&PowerOverrideMask == PowerOverride
+}
+
 func (c ControlStatus) String() string {
 	var sb strings.Builder
 	sb.WriteString(fmt.Sprintf("    Software Reset:                 %t\n", c.IsSoftwareReset()))
 	sb.WriteString(fmt.Sprintf("    High Power Class 8 Enabled:     %t\n", c.IsHighPowerClass8Enabled()))
 	sb.WriteString(fmt.Sprintf("    High Power Classes 5-7 Enabled: %t\n", c.IsHighPowerClass5to7Enabled()))
-	sb.WriteString(fmt.Sprintf("    Low Power Mode:                 %t", c.IsLowPowerMode()))
+	sb.WriteString(fmt.Sprintf("    Low Power Mode:                 %t\n", c.IsLowPowerMode()))
+	sb.WriteString(fmt.Sprintf("    Power Override:                 %t", c.IsPowerOverride()))
 	return sb.String()
 }
 
@@ -268,6 +271,7 @@ func (c ControlStatus) MarshalJSON() ([]byte, error) {
 		"highPowerClass8Enabled":    c.IsHighPowerClass8Enabled(),
 		"highPowerClass5to7Enabled": c.IsHighPowerClass5to7Enabled(),
 		"lowPowerMode":              c.IsLowPowerMode(),
+		"powerOverride":             c.IsPowerOverride(),
 		"hex":                       hex.EncodeToString([]byte{byte(c)}),
 	}
 	return json.Marshal(m)

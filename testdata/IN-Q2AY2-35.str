@@ -16,8 +16,9 @@ Channel Monitoring [34-81]                         :
 Control Status [93]                                : 0x04
     Software Reset:                 false
     High Power Class 8 Enabled:     false
-    High Power Classes 5-7 Enabled: false
+    High Power Classes 5-7 Enabled: true
     Low Power Mode:                 false
+    Power Override:                 false
 Identifier [128]                                   : 0x11 (QSFP28)
 Extended Identifier [129]                          : 0xcf
 Extended Identifier Description                    : Power Class 7

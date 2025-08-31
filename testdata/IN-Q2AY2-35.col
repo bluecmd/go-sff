@@ -16,7 +16,7 @@
 [36mControl Status [93]                               [0m : [32m0x04[0m
 [36m  Software Reset                                  [0m : [32mfalse[0m
 [36m  High Power Class 8                              [0m : [32mfalse[0m
-[36m  High Power Classes 5-7                          [0m : [32mfalse[0m
+[36m  High Power Classes 5-7                          [0m : [32mtrue[0m
 [36m  Low Power Mode                                  [0m : [32mfalse[0m
 [36mIdentifier [128]                                  [0m : [32m0x11 (QSFP28)[0m
 [36mExtended Identifier [129]                         [0m : [32m0xcf[0m
