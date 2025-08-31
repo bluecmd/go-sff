@@ -37,7 +37,7 @@ var pwrClassNames = map[byte]string{
 	PwrClass1: "1.5 W max. power consumption",
 	PwrClass2: "2.0 W max. power consumption",
 	PwrClass3: "2.5 W max. power consumption",
-	PwrClass4: "3.5 W max. power consumption",
+	PwrClass4: "3.5 W max. power consumption (or Power Classes 5, 6 or 7)",
 }
 
 var clieCodeNames = map[byte]string{

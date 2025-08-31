@@ -1,6 +1,6 @@
 Identifier [128]                                   : 0x11 (QSFP28)
 Extended Identifier [129]                          : 0xcf
-Extended Identifier Description                    : 3.5 W max. power consumption
+Extended Identifier Description                    : 3.5 W max. power consumption (or Power Classes 5, 6 or 7)
                                                    : No CLEI code present
                                                    : CDR in TX, CDR in RX
                                                    : 5.0 W max. power consumption
