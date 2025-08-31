@@ -1,0 +1,23 @@
+Identifier [0]                                     : 0x03 (SFP)
+Extended Identifier [1]                            : 0x04 (GBIC/SFP defined by 2-wire interface ID)
+Connector [2]                                      : 0x07 (LC)
+Transceiver Codes [3-10]                           : 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+Transceiver Type                                   : 
+Encoding [11]                                      : 0x06 (64B/66B)
+BR, Nominal [12]                                   : 10300 Mb/s
+Rate Identifier [13]                               : 0x00
+Length (SMF) [14]                                  : 80 km
+Length (SMF) [15]                                  : 255 m
+Length (50um) [16]                                 : 0 m
+Length (62.5um) [17]                               : 0 m
+Length (Copper) [18]                               : 0 m
+Length (OM3) [19]                                  : 0 m
+Vendor [20-35]                                     : JDSU
+Vendor OUI [37-39]                                 : 0:1:9c
+Vendor PN [40-55]                                  : JST01TMAC1CY5GEN
+Vendor Rev [56-59]                                 : 0000
+Option Values [64-65]                              : 0x06 0x5a
+BR Margin, Max [66]                                : 10 %
+BR Margin, Min [67]                                : 4 %
+Vendor SN [68-83]                                  : FE385518002A
+Date Code [84-91]                                  : 2014-09-17

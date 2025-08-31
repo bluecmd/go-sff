@@ -1,0 +1,23 @@
+[36mIdentifier [128]                                  [0m : [32m0x11 (QSFP28)[0m
+[36mExtended Identifier [129]                         [0m : [32m0xcf[0m
+[36mExtended Identifier Description                   [0m : [32m3.5 W max. power consumption
+                                                   : No CLEI code present
+                                                   : CDR in TX, CDR in RX
+                                                   : 5.0 W max. power consumption[0m
+[36mConnector [130]                                   [0m : [32m0x07 (LC)[0m
+[36mTransceiver Codes [131-138]                       [0m : [32m0x80 0x00 0x00 0x00 0x00 0x00 0x00 0x00[0m
+[36mTransceiver Type                                  [0m : [33m[0m
+[36mEncoding [139]                                    [0m : [32m0x08 (PAM4)[0m
+[36mBR, Nominal [140]                                 [0m : [32m25500 Mb/s[0m
+[36mRate Identifier [141]                             [0m : [32m0x00[0m
+[36mLength (SMF) [142]                                [0m : [32m80 km[0m
+[36mLength (OM3 50um) [143]                           [0m : [32m0 m[0m
+[36mLength (OM2 50um) [144]                           [0m : [32m0 m[0m
+[36mLength (OM1 62.5um) [145]                         [0m : [32m0 m[0m
+[36mLength (Copper or Active cable) [146]             [0m : [32m0 m[0m
+[36mVendor [148-163]                                  [0m : [32mINPHI CORP[0m
+[36mVendor OUI [165-167]                              [0m : [32m0:21:b8[0m
+[36mVendor PN [168-183]                               [0m : [32mIN-Q2AY2-35[0m
+[36mVendor Rev [184-185]                              [0m : [32m10[0m
+[36mVendor SN [196-211]                               [0m : [32mL202100651[0m
+[36mDate Code [212-219]                               [0m : [32m2020-09-21[0m

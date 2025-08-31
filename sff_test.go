@@ -2,6 +2,8 @@ package sff
 
 import (
 	"fmt"
+	"os"
+	"strings"
 	"testing"
 
 	"github.com/bluecmd/go-sff/sff8079"
@@ -190,4 +192,164 @@ func createSff8636Eeprom() []byte {
 	copy(eeprom[212:220], dateCode)
 
 	return eeprom
+}
+
+// TestStringOutputs tests both String() and StringCol() methods against actual EEPROM data files
+func TestStringOutputs(t *testing.T) {
+	testCases := []struct {
+		name    string
+		binFile string
+		strFile string
+		colFile string
+	}{
+		{
+			name:    "FLEX-P.8596.02",
+			binFile: "testdata/FLEX-P.8596.02.bin",
+			strFile: "testdata/FLEX-P.8596.02.str",
+			colFile: "testdata/FLEX-P.8596.02.col",
+		},
+		{
+			name:    "IN-Q2AY2-35",
+			binFile: "testdata/IN-Q2AY2-35.bin",
+			strFile: "testdata/IN-Q2AY2-35.str",
+			colFile: "testdata/IN-Q2AY2-35.col",
+		},
+		{
+			name:    "JST01TMAC1CY5GEN",
+			binFile: "testdata/JST01TMAC1CY5GEN.bin",
+			strFile: "testdata/JST01TMAC1CY5GEN.str",
+			colFile: "testdata/JST01TMAC1CY5GEN.col",
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.name, func(t *testing.T) {
+			// Read the EEPROM data file
+			eepromData, err := os.ReadFile(tc.binFile)
+			if err != nil {
+				t.Fatalf("Failed to read EEPROM file %s: %v", tc.binFile, err)
+			}
+
+			// Create a reader and parse the module
+			reader := &MockReader{data: eepromData}
+			module, err := Read(reader)
+			if err != nil {
+				t.Fatalf("Failed to parse EEPROM data: %v", err)
+			}
+
+			// Test String() method
+			t.Run("String", func(t *testing.T) {
+				actualOutput := module.String()
+
+				// Check if golden output file exists, if not create it
+				if _, err := os.Stat(tc.strFile); os.IsNotExist(err) {
+					// Create the golden output file
+					err = os.WriteFile(tc.strFile, []byte(actualOutput), 0644)
+					if err != nil {
+						t.Fatalf("Failed to create golden output file %s: %v", tc.strFile, err)
+					}
+					t.Logf("Created golden output file: %s", tc.strFile)
+					return
+				}
+
+				// Read expected output and compare
+				expectedBytes, err := os.ReadFile(tc.strFile)
+				if err != nil {
+					t.Fatalf("Failed to read expected output file %s: %v", tc.strFile, err)
+				}
+
+				expectedOutput := string(expectedBytes)
+
+				// Normalize line endings for comparison
+				actual := strings.ReplaceAll(actualOutput, "\r\n", "\n")
+				expected := strings.ReplaceAll(expectedOutput, "\r\n", "\n")
+
+				if actual != expected {
+					t.Errorf("String output mismatch for %s", tc.name)
+					t.Logf("Expected:\n%s", expected)
+					t.Logf("Actual:\n%s", actual)
+
+					// Show differences more clearly
+					actualLines := strings.Split(actual, "\n")
+					expectedLines := strings.Split(expected, "\n")
+
+					maxLines := len(actualLines)
+					if len(expectedLines) > maxLines {
+						maxLines = len(expectedLines)
+					}
+
+					for i := 0; i < maxLines; i++ {
+						var actualLine, expectedLine string
+						if i < len(actualLines) {
+							actualLine = actualLines[i]
+						}
+						if i < len(expectedLines) {
+							expectedLine = expectedLines[i]
+						}
+
+						if actualLine != expectedLine {
+							t.Logf("Line %d: expected '%s', got '%s'", i+1, expectedLine, actualLine)
+						}
+					}
+				}
+			})
+
+			// Test StringCol() method
+			t.Run("StringCol", func(t *testing.T) {
+				actualOutput := module.StringCol()
+
+				// Check if golden output file exists, if not create it
+				if _, err := os.Stat(tc.colFile); os.IsNotExist(err) {
+					// Create the golden output file
+					err = os.WriteFile(tc.colFile, []byte(actualOutput), 0644)
+					if err != nil {
+						t.Fatalf("Failed to create golden output file %s: %v", tc.colFile, err)
+					}
+					t.Logf("Created golden output file: %s", tc.colFile)
+					return
+				}
+
+				// Read expected output and compare
+				expectedBytes, err := os.ReadFile(tc.colFile)
+				if err != nil {
+					t.Fatalf("Failed to read expected output file %s: %v", tc.colFile, err)
+				}
+
+				expectedOutput := string(expectedBytes)
+
+				// Normalize line endings for comparison
+				actual := strings.ReplaceAll(actualOutput, "\r\n", "\n")
+				expected := strings.ReplaceAll(expectedOutput, "\r\n", "\n")
+
+				if actual != expected {
+					t.Errorf("StringCol output mismatch for %s", tc.name)
+					t.Logf("Expected:\n%s", expected)
+					t.Logf("Actual:\n%s", actual)
+
+					// Show differences more clearly
+					actualLines := strings.Split(actual, "\n")
+					expectedLines := strings.Split(expected, "\n")
+
+					maxLines := len(actualLines)
+					if len(expectedLines) > maxLines {
+						maxLines = len(expectedLines)
+					}
+
+					for i := 0; i < maxLines; i++ {
+						var actualLine, expectedLine string
+						if i < len(actualLines) {
+							actualLine = actualLines[i]
+						}
+						if i < len(expectedLines) {
+							expectedLine = expectedLines[i]
+						}
+
+						if actualLine != expectedLine {
+							t.Logf("Line %d: expected '%s', got '%s'", i+1, expectedLine, actualLine)
+						}
+					}
+				}
+			})
+		})
+	}
 }
