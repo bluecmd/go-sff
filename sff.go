@@ -3,6 +3,7 @@ package sff
 import (
 	"errors"
 	"fmt"
+	"os"
 
 	"github.com/bluecmd/go-sff/sff8079"
 	"github.com/bluecmd/go-sff/sff8636"
@@ -87,6 +88,40 @@ func (r *I2CReader) Read() ([]byte, error) {
 	i.Write([]byte{0x00})
 	b := make([]byte, 256)
 	i.Read(b)
+	return b, nil
+}
+
+// FileReader implements Reader interface for file-based reading
+type FileReader struct {
+	path string
+}
+
+// NewFileReader creates a new FileReader for the given file path
+func NewFileReader(path string) *FileReader {
+	return &FileReader{path: path}
+}
+
+// Read implements the Reader interface for file-based reading
+func (r *FileReader) Read() ([]byte, error) {
+	file, err := os.Open(r.path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	b := make([]byte, 256)
+	n, err := file.Read(b)
+	if err != nil {
+		return nil, err
+	}
+
+	// If we read less than 256 bytes, pad with zeros
+	if n < 256 {
+		for i := n; i < 256; i++ {
+			b[i] = 0
+		}
+	}
+
 	return b, nil
 }
 

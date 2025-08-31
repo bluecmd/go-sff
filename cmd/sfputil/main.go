@@ -13,6 +13,7 @@ import (
 func main() {
 	var (
 		devicePath = flag.String("device", "/dev/i2c-0", "I2C device path")
+		filePath   = flag.String("file", "", "File path to read EEPROM data from")
 		outputJSON = flag.Bool("json", false, "Output in JSON format")
 		outputCol  = flag.Bool("color", false, "Output with colors")
 		help       = flag.Bool("help", false, "Show help")
@@ -25,13 +26,27 @@ func main() {
 		flag.PrintDefaults()
 		fmt.Fprintf(os.Stderr, "\nExamples:\n")
 		fmt.Fprintf(os.Stderr, "  %s -device /dev/i2c-1\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "  %s -file /path/to/eeprom.bin\n", os.Args[0])
 		fmt.Fprintf(os.Stderr, "  %s -json\n", os.Args[0])
 		fmt.Fprintf(os.Stderr, "  %s -color\n", os.Args[0])
 		os.Exit(0)
 	}
 
+	// Validate that either device or file is specified, but not both
+	if *devicePath != "/dev/i2c-0" && *filePath != "" {
+		log.Fatal("Cannot specify both -device and -file flags")
+	}
+
+	// Create appropriate reader based on flags
+	var reader sff.Reader
+	if *filePath != "" {
+		reader = sff.NewFileReader(*filePath)
+	} else {
+		reader = sff.NewI2CReader(*devicePath)
+	}
+
 	// Read transceiver data
-	module, err := sff.Read(sff.NewI2CReader(*devicePath))
+	module, err := sff.Read(reader)
 	if err != nil {
 		log.Fatalf("Failed to read transceiver: %v", err)
 	}
