@@ -8,6 +8,11 @@ import (
 	"github.com/bluecmd/go-sff/sff8636"
 )
 
+// Reader interface defines how to read SFF EEPROM data
+type Reader interface {
+	Read() ([]byte, error)
+}
+
 // Type of eeprom module.
 type Type string
 
@@ -22,18 +27,6 @@ var ErrUnknownType = errors.New("unknown type")
 type Module struct {
 	Type Type
 	*sff8079.Sff8079
-	*sff8636.Sff8636
-}
-
-type module Module
-
-type moduleSff8079 struct {
-	Type Type
-	*sff8079.Sff8079
-}
-
-type moduleSff8636 struct {
-	Type Type
 	*sff8636.Sff8636
 }
 
@@ -73,9 +66,20 @@ func GetType(eeprom []byte) (Type, error) {
 	return TypeUnknown, fmt.Errorf("eeprom unknown type")
 }
 
-func readI2C(f string) ([]byte, error) {
+// I2CReader implements Reader interface for I2C devices
+type I2CReader struct {
+	path string
+}
+
+// NewI2CReader creates a new I2CReader for the given device path
+func NewI2CReader(path string) *I2CReader {
+	return &I2CReader{path: path}
+}
+
+// Read implements the Reader interface for I2C devices
+func (r *I2CReader) Read() ([]byte, error) {
 	// 0x50 and 0x51 SFP port
-	i, err := NewI2C(f, 0x50)
+	i, err := NewI2C(r.path, 0x50)
 	if err != nil {
 		return nil, err
 	}
@@ -86,8 +90,9 @@ func readI2C(f string) ([]byte, error) {
 	return b, nil
 }
 
-func Read(f string) (*Module, error) {
-	eeprom, err := readI2C(f)
+// Read reads SFF EEPROM data using the provided Reader interface
+func Read(reader Reader) (*Module, error) {
+	eeprom, err := reader.Read()
 	if err != nil {
 		return nil, err
 	}

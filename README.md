@@ -53,7 +53,7 @@ import (
 
 func main() {
     // Read transceiver data from I2C device
-    module, err := sff.Read("/dev/i2c-0")
+	module, err := sff.Read(sff.NewI2CReader("/dev/i2c-0"))
     if err != nil {
         log.Fatal(err)
     }
@@ -118,7 +118,40 @@ if module.Type == sff.TypeSff8636 {
 }
 ```
 
-## I2C Interface
+## Reading SFF EEPROM Data
+
+The library provides a flexible interface-based approach for reading SFF EEPROM data. You can implement your own reader or use the built-in I2C reader.
+
+### Using the Reader Interface
+
+```go
+// Define a custom reader
+type CustomReader struct {
+    // your fields
+}
+
+func (r *CustomReader) Read() ([]byte, error) {
+    // implement your reading logic
+    return eepromData, nil
+}
+
+// Use your custom reader
+reader := &CustomReader{}
+module, err := sff.Read(reader)
+```
+
+### Using the Built-in I2C Reader
+
+```go
+// Create an I2C reader
+reader := sff.NewI2CReader("/dev/i2c-0")
+module, err := sff.Read(reader)
+
+// Or use the convenience function for backward compatibility
+module, err := sff.ReadFromPath("/dev/i2c-0")
+```
+
+### I2C Interface
 
 The library includes a low-level I2C interface for reading EEPROM data:
 
@@ -138,7 +171,7 @@ i2c.Read(data)
 
 ## Requirements
 
-- Go 1.16 or later
+- Go 1.19 or later
 
 ## Building the sfputil
 

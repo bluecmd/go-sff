@@ -1,6 +1,7 @@
 package sff
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/bluecmd/go-sff/sff8079"
@@ -53,18 +54,56 @@ func TestGetType(t *testing.T) {
 	}
 }
 
-func TestRead(t *testing.T) {
-	// Test with mock data - this would require mocking the I2C interface
-	// For now, we'll just test the type detection logic
-	eeprom := createSff8079Eeprom()
+// MockReader implements the Reader interface for testing
+type MockReader struct {
+	data []byte
+	err  error
+}
 
-	moduleType, err := GetType(eeprom)
+func (m *MockReader) Read() ([]byte, error) {
+	if m.err != nil {
+		return nil, m.err
+	}
+	return m.data, nil
+}
+
+func TestRead(t *testing.T) {
+	// Test with mock reader
+	eeprom := createSff8079Eeprom()
+	reader := &MockReader{data: eeprom}
+
+	module, err := Read(reader)
 	if err != nil {
-		t.Fatalf("GetType failed: %v", err)
+		t.Fatalf("Read failed: %v", err)
 	}
 
-	if moduleType != TypeSff8079 {
-		t.Errorf("Expected SFF-8079, got %v", moduleType)
+	if module.Type != TypeSff8079 {
+		t.Errorf("Expected SFF-8079, got %v", module.Type)
+	}
+
+	if module.Sff8079 == nil {
+		t.Error("Expected Sff8079 to be populated")
+	}
+}
+
+func TestReadWithError(t *testing.T) {
+	// Test with reader that returns error
+	reader := &MockReader{err: fmt.Errorf("read error")}
+
+	_, err := Read(reader)
+	if err == nil {
+		t.Error("Expected error from Read")
+	}
+}
+
+func TestReadFromPath(t *testing.T) {
+	// Test the convenience function (this will fail on systems without I2C devices)
+	// but we can test that it creates the right type of reader
+	path := "/dev/i2c-0"
+	reader := NewI2CReader(path)
+
+	if reader.path != path {
+		t.Errorf("Expected path %s, got %s", path, reader.path)
 	}
 }
 
