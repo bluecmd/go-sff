@@ -19,5 +19,6 @@
 [36mVendor OUI [165-167]                              [0m : [32m0:21:b8[0m
 [36mVendor PN [168-183]                               [0m : [32mIN-Q2AY2-35[0m
 [36mVendor Rev [184-185]                              [0m : [32m10[0m
+[36mOption Values [193-195]                           [0m : [32mTx input equalizers auto-adaptive capable, Rx output emphasis fixed-programmable, Rx output amplitude fixed-programmable, Tx CDR Loss of Lock flag, Rx CDR Loss of Lock flag, Rx Output Disable, Tx Squelch, Memory Page 02 provided, Tx_Disable implemented, Tx Squelch reduces Pave[0m
 [36mVendor SN [196-211]                               [0m : [32mL202100651[0m
 [36mDate Code [212-219]                               [0m : [32m2020-09-21[0m

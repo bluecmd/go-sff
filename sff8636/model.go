@@ -43,7 +43,7 @@ type Sff8636 struct {
 	MaxCaseTempC      byte                `json:"-"`              // 190 - Max case temp.
 	CcBase            byte                `json:"-"`              // 191 - CC_BASE
 	LinkCodes         LinkCodes           `json:"linkCodes"`      // 192 - Link codes
-	Options           [3]byte             `json:"options"`        // 193-195 - Options
+	Options           Options             `json:"options"`        // 193-195 - Options
 	VendorSn          common.String16     `json:"vendorSn"`       // 196-211 - Vendor SN
 	DateCode          common.DateCode     `json:"dateCode"`       // 212-219 - Date Code
 	DiagMonType       byte                `json:"-"`              // 220 - Diagnostic Monitoring Type
@@ -84,6 +84,7 @@ func (s *Sff8636) String() string {
 		fmt.Sprintf("%-50s : %s\n", "Vendor OUI [165-167]", s.VendorOui) +
 		fmt.Sprintf("%-50s : %s\n", "Vendor PN [168-183]", s.VendorPn) +
 		fmt.Sprintf("%-50s : %s\n", "Vendor Rev [184-185]", s.VendorRev) +
+		fmt.Sprintf("%-50s : %s\n", "Option Values [193-195]", s.Options.String()) +
 		fmt.Sprintf("%-50s : %s\n", "Vendor SN [196-211]", s.VendorSn) +
 		fmt.Sprintf("%-50s : %s\n", "Date Code [212-219]", s.DateCode)
 }
@@ -122,6 +123,7 @@ func (s *Sff8636) StringCol() string {
 		strCol("Vendor OUI [165-167]", s.VendorOui.String(), cyan, green) +
 		strCol("Vendor PN [168-183]", s.VendorPn.String(), cyan, green) +
 		strCol("Vendor Rev [184-185]", s.VendorRev.String(), cyan, green) +
+		strCol("Option Values [193-195]", s.Options.String(), cyan, green) +
 		strCol("Vendor SN [196-211]", s.VendorSn.String(), cyan, green) +
 		strCol("Date Code [212-219]", s.DateCode.String(), cyan, green)
 }
