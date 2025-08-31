@@ -20,7 +20,7 @@ const (
 var ErrUnknownType = errors.New("unknown type")
 
 type Module struct {
-	Type             Type
+	Type Type
 	*sff8079.Sff8079
 	*sff8636.Sff8636
 }

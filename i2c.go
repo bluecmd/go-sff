@@ -28,10 +28,11 @@ func (i2c *I2C) Write(buf []byte) (int, error) {
 	return i2c.rc.Write(buf)
 }
 
-func (i2c *I2C) WriteByte(b byte) (int, error) {
+func (i2c *I2C) WriteByte(b byte) error {
 	var buf [1]byte
 	buf[0] = b
-	return i2c.rc.Write(buf[:])
+	_, err := i2c.rc.Write(buf[:])
+	return err
 }
 
 func (i2c *I2C) Read(p []byte) (int, error) {
