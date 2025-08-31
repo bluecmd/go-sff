@@ -1,9 +1,12 @@
-.PHONY: all build test clean sfputil
+.PHONY: all build test test-container clean sfputil
 
 all: sfputil
 
 test:
 	go test ./...
+
+test-container:
+	./run-test-container.sh
 
 test-verbose:
 	go test -v ./...

@@ -1,0 +1,28 @@
+name: Container Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  container-tests:
+    name: Run Container Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build container image
+      run: docker build -t go-sff-test -f Containerfile .
+
+    - name: Run tests in container
+      run: docker run --rm go-sff-test make test
+
+    - name: Build sfputil in container
+      run: docker run --rm go-sff-test make sfputil

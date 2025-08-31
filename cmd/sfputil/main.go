@@ -31,7 +31,7 @@ func main() {
 	}
 
 	// Read transceiver data
-	module, err := sff.Read(*devicePath)
+	module, err := sff.Read(sff.NewI2CReader(*devicePath))
 	if err != nil {
 		log.Fatalf("Failed to read transceiver: %v", err)
 	}

@@ -1,5 +1,7 @@
 # go-sff
 
+[![Container Tests](https://github.com/bluecmd/go-sff/workflows/Container%20Tests/badge.svg)](https://github.com/bluecmd/go-sff/actions)
+
 A Go library for reading and parsing SFF (Small Form Factor) transceiver EEPROM data from network devices. This library supports both SFF-8079 (SFP) and SFF-8636 (QSFP) standards.
 
 ## Overview
@@ -177,6 +179,13 @@ i2c.Read(data)
 
 ```bash
 make sfputil
+```
+
+## Running Tests
+
+```bash
+make test
+make test-container
 ```
 
 ## License
