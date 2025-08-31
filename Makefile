@@ -1,6 +1,6 @@
-.PHONY: all build test clean example
+.PHONY: all build test clean sfputil
 
-all: example
+all: sfputil
 
 test:
 	go test ./...
@@ -11,11 +11,11 @@ test-verbose:
 test-coverage:
 	go test -cover ./...
 
-example:
-	(cd example; CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build)
+sfputil:
+	CGO_ENABLED=0 go build ./cmd/sfputil/
 
 clean:
-	\rm -f example/example
+	\rm -f sfputil
 
 deps:
 	go mod tidy

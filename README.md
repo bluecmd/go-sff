@@ -140,11 +140,10 @@ i2c.Read(data)
 
 - Go 1.16 or later
 
-## Building the example
+## Building the sfputil
 
 ```bash
-cd example
-make
+make sfputil
 ```
 
 ## License
