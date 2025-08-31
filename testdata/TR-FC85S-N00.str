@@ -1,0 +1,43 @@
+Identifier [0]                                     : 0x11
+Revision Compliance [1]                            : 0x07 (SFF-8636 Rev 2.5, 2.6 and 2.7)
+Channel Monitoring [34-81]                         :
+    Rx1 Power:      0.7981 mW
+    Rx2 Power:      0.8276 mW
+    Rx3 Power:      0.8123 mW
+    Rx4 Power:      0.8783 mW
+    Tx1 Bias:       5.7860 mA
+    Tx2 Bias:       5.4680 mA
+    Tx3 Bias:       5.5320 mA
+    Tx4 Bias:       5.4680 mA
+    Tx1 Power:      1.1083 mW
+    Tx2 Power:      1.0740 mW
+    Tx3 Power:      1.1618 mW
+    Tx4 Power:      1.0206 mW
+Control Status [93]                                : 0x00
+    Software Reset:                 false
+    High Power Class 8 Enabled:     false
+    High Power Classes 5-7 Enabled: false
+    Low Power Mode:                 false
+Identifier [128]                                   : 0x11 (QSFP28)
+Extended Identifier [129]                          : 0xcc
+Extended Identifier Description                    : Power Class 4
+                                                   : No CLEI code present
+                                                   : CDR in TX, CDR in RX
+Connector [130]                                    : 0x0c (MPO Parallel Optic)
+Transceiver Codes [131-138]                        : 0x80 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+Transceiver Type                                   : 
+Encoding [139]                                     : 0x05 (64B/66B)
+BR, Nominal [140]                                  : 25500 Mb/s
+Rate Identifier [141]                              : 0x02
+Length (SMF) [142]                                 : 0 km
+Length (OM3 50um) [143]                            : 35 m
+Length (OM2 50um) [144]                            : 0 m
+Length (OM1 62.5um) [145]                          : 0 m
+Length (Copper or Active cable) [146]              : 50 m
+Vendor [148-163]                                   : INNOLIGHT
+Vendor OUI [165-167]                               : 44:7c:7f
+Vendor PN [168-183]                                : TR-FC85S-N00
+Vendor Rev [184-185]                               : 1A
+Option Values [193-195]                            : Tx input equalizers fixed-programmable, Rx output emphasis fixed-programmable, Rx output amplitude fixed-programmable, Tx CDR On/Off Control, Rx CDR On/Off Control, Tx CDR Loss of Lock flag, Rx CDR Loss of Lock flag, Rx Squelch Disable, Rx Output Disable, Tx Squelch, Memory Page 02 provided, Memory Page 01h provided, Tx_Disable implemented, Tx Squelch reduces OMA, Tx Loss of Signal
+Vendor SN [196-211]                                : INKAP3224117
+Date Code [212-219]                                : 2020-04-29

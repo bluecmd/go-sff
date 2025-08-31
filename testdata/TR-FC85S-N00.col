@@ -1,0 +1,43 @@
+[36mIdentifier [0]                                    [0m : [32m0x11[0m
+[36mRevision Compliance [1]                           [0m : [32m0x07 (SFF-8636 Rev 2.5, 2.6 and 2.7)[0m
+[36mChannel Monitoring [34-81]                        [0m : [33m[0m
+[36m  Rx1 Power                                       [0m : [32m0.7981 mW[0m
+[36m  Rx2 Power                                       [0m : [32m0.8276 mW[0m
+[36m  Rx3 Power                                       [0m : [32m0.8123 mW[0m
+[36m  Rx4 Power                                       [0m : [32m0.8783 mW[0m
+[36m  Tx1 Bias                                        [0m : [32m5.7860 mA[0m
+[36m  Tx2 Bias                                        [0m : [32m5.4680 mA[0m
+[36m  Tx3 Bias                                        [0m : [32m5.5320 mA[0m
+[36m  Tx4 Bias                                        [0m : [32m5.4680 mA[0m
+[36m  Tx1 Power                                       [0m : [32m1.1083 mW[0m
+[36m  Tx2 Power                                       [0m : [32m1.0740 mW[0m
+[36m  Tx3 Power                                       [0m : [32m1.1618 mW[0m
+[36m  Tx4 Power                                       [0m : [32m1.0206 mW[0m
+[36mControl Status [93]                               [0m : [32m0x00[0m
+[36m  Software Reset                                  [0m : [32mfalse[0m
+[36m  High Power Class 8                              [0m : [32mfalse[0m
+[36m  High Power Classes 5-7                          [0m : [32mfalse[0m
+[36m  Low Power Mode                                  [0m : [32mfalse[0m
+[36mIdentifier [128]                                  [0m : [32m0x11 (QSFP28)[0m
+[36mExtended Identifier [129]                         [0m : [32m0xcc[0m
+[36mExtended Identifier Description                   [0m : [32mPower Class 4
+                                                   : No CLEI code present
+                                                   : CDR in TX, CDR in RX[0m
+[36mConnector [130]                                   [0m : [32m0x0c (MPO Parallel Optic)[0m
+[36mTransceiver Codes [131-138]                       [0m : [32m0x80 0x00 0x00 0x00 0x00 0x00 0x00 0x00[0m
+[36mTransceiver Type                                  [0m : [33m[0m
+[36mEncoding [139]                                    [0m : [32m0x05 (64B/66B)[0m
+[36mBR, Nominal [140]                                 [0m : [32m25500 Mb/s[0m
+[36mRate Identifier [141]                             [0m : [32m0x02[0m
+[36mLength (SMF) [142]                                [0m : [32m0 km[0m
+[36mLength (OM3 50um) [143]                           [0m : [32m35 m[0m
+[36mLength (OM2 50um) [144]                           [0m : [32m0 m[0m
+[36mLength (OM1 62.5um) [145]                         [0m : [32m0 m[0m
+[36mLength (Copper or Active cable) [146]             [0m : [32m50 m[0m
+[36mVendor [148-163]                                  [0m : [32mINNOLIGHT[0m
+[36mVendor OUI [165-167]                              [0m : [32m44:7c:7f[0m
+[36mVendor PN [168-183]                               [0m : [32mTR-FC85S-N00[0m
+[36mVendor Rev [184-185]                              [0m : [32m1A[0m
+[36mOption Values [193-195]                           [0m : [32mTx input equalizers fixed-programmable, Rx output emphasis fixed-programmable, Rx output amplitude fixed-programmable, Tx CDR On/Off Control, Rx CDR On/Off Control, Tx CDR Loss of Lock flag, Rx CDR Loss of Lock flag, Rx Squelch Disable, Rx Output Disable, Tx Squelch, Memory Page 02 provided, Memory Page 01h provided, Tx_Disable implemented, Tx Squelch reduces OMA, Tx Loss of Signal[0m
+[36mVendor SN [196-211]                               [0m : [32mINKAP3224117[0m
+[36mDate Code [212-219]                               [0m : [32m2020-04-29[0m

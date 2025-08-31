@@ -220,6 +220,13 @@ func TestStringOutputs(t *testing.T) {
 			strFile: "testdata/JST01TMAC1CY5GEN.str",
 			colFile: "testdata/JST01TMAC1CY5GEN.col",
 		},
+		{
+			name:    "TR-FC85S-N00",
+			binFile: "testdata/TR-FC85S-N00.bin",
+			strFile: "testdata/TR-FC85S-N00.str",
+			colFile: "testdata/TR-FC85S-N00.col",
+		},
+
 	}
 
 	for _, tc := range testCases {
