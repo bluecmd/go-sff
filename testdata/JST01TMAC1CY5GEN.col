@@ -15,7 +15,7 @@
 [36mVendor OUI [37-39]                                [0m : [32m0:1:9c[0m
 [36mVendor PN [40-55]                                 [0m : [32mJST01TMAC1CY5GEN[0m
 [36mVendor Rev [56-59]                                [0m : [32m0000[0m
-[36mOption Values [64-65]                             [0m : [32m0x06 0x5a[0m
+[36mOption Values [64-65]                             [0m : [32mPower Level 2, Cooled Transceiver, Tunable Transmitter, TX Disable, TX Fault, Loss of Signal (Standard)[0m
 [36mBR Margin, Max [66]                               [0m : [32m10 %[0m
 [36mBR Margin, Min [67]                               [0m : [32m4 %[0m
 [36mVendor SN [68-83]                                 [0m : [32mFE385518002A[0m

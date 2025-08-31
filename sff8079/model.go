@@ -41,7 +41,7 @@ type Sff8079 struct {
 	LaserWavelength [2]byte             `json:"-"`              // 60-61 - Laser wavelength
 	Unallocated     byte                `json:"-"`              // 62 - Unallocated
 	CcBase          byte                `json:"-"`              // 63 - CC_BASE
-	Options         [2]byte             `json:"options"`        // 64-65 - Options
+	Options         Options             `json:"options"`        // 64-65 - Options
 	BrMax           common.ValuePerc    `json:"brMax"`          // 66 - BR, max
 	BrMin           common.ValuePerc    `json:"brMin"`          // 67 - BR, min
 	VendorSn        common.String16     `json:"vendorSn"`       // 68-83 - Vendor SN
@@ -88,7 +88,7 @@ func (s *Sff8079) String() string {
 		fmt.Sprintf("%-50s : %s\n", "Vendor OUI [37-39]", s.VendorOui) +
 		fmt.Sprintf("%-50s : %s\n", "Vendor PN [40-55]", s.VendorPn) +
 		fmt.Sprintf("%-50s : %s\n", "Vendor Rev [56-59]", s.VendorRev) +
-		fmt.Sprintf("%-50s : 0x%02x 0x%02x\n", "Option Values [64-65]", s.Options[0], s.Options[1]) +
+		fmt.Sprintf("%-50s : %s\n", "Option Values [64-65]", s.Options.String()) +
 		fmt.Sprintf("%-50s : %s\n", "BR Margin, Max [66]", s.BrMax) +
 		fmt.Sprintf("%-50s : %s\n", "BR Margin, Min [67]", s.BrMin) +
 		fmt.Sprintf("%-50s : %s\n", "Vendor SN [68-83]", s.VendorSn) +
@@ -136,7 +136,7 @@ func (s *Sff8079) StringCol() string {
 		strCol("Vendor OUI [37-39]", s.VendorOui.String(), cyan, green) +
 		strCol("Vendor PN [40-55]", s.VendorPn.String(), cyan, green) +
 		strCol("Vendor Rev [56-59]", s.VendorRev.String(), cyan, green) +
-		strCol("Option Values [64-65]", fmt.Sprintf("0x%02x 0x%02x", s.Options[0], s.Options[1]), cyan, green) +
+		strCol("Option Values [64-65]", s.Options.String(), cyan, green) +
 		strCol("BR Margin, Max [66]", s.BrMax.String(), cyan, green) +
 		strCol("BR Margin, Min [67]", s.BrMin.String(), cyan, green) +
 		strCol("Vendor SN [68-83]", s.VendorSn.String(), cyan, green) +

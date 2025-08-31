@@ -16,7 +16,7 @@ Vendor [20-35]                                     : JDSU
 Vendor OUI [37-39]                                 : 0:1:9c
 Vendor PN [40-55]                                  : JST01TMAC1CY5GEN
 Vendor Rev [56-59]                                 : 0000
-Option Values [64-65]                              : 0x06 0x5a
+Option Values [64-65]                              : Power Level 2, Cooled Transceiver, Tunable Transmitter, TX Disable, TX Fault, Loss of Signal (Standard)
 BR Margin, Max [66]                                : 10 %
 BR Margin, Min [67]                                : 4 %
 Vendor SN [68-83]                                  : FE385518002A

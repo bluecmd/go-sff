@@ -16,7 +16,7 @@ Vendor [20-35]                                     : FLEXOPTIX
 Vendor OUI [37-39]                                 : 38:86:2
 Vendor PN [40-55]                                  : P.8596.02
 Vendor Rev [56-59]                                 : A
-Option Values [64-65]                              : 0x00 0x1a
+Option Values [64-65]                              : Power Level 1, TX Disable, TX Fault, Loss of Signal (Standard)
 BR Margin, Max [66]                                : 0 %
 BR Margin, Min [67]                                : 0 %
 Vendor SN [68-83]                                  : F79D002
