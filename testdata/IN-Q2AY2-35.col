@@ -1,3 +1,23 @@
+[36mIdentifier [0]                                    [0m : [32m0x11[0m
+[36mRevision Compliance [1]                           [0m : [32m0x07 (SFF-8636 Rev 2.5, 2.6 and 2.7)[0m
+[36mChannel Monitoring [34-81]                        [0m : [33m[0m
+[36m  Rx1 Power                                       [0m : [32m0.0000 mW[0m
+[36m  Rx2 Power                                       [0m : [32m0.0000 mW[0m
+[36m  Rx3 Power                                       [0m : [32m0.0000 mW[0m
+[36m  Rx4 Power                                       [0m : [32m0.0000 mW[0m
+[36m  Tx1 Bias                                        [0m : [32m0.0000 mA[0m
+[36m  Tx2 Bias                                        [0m : [32m0.0000 mA[0m
+[36m  Tx3 Bias                                        [0m : [32m0.0000 mA[0m
+[36m  Tx4 Bias                                        [0m : [32m0.0000 mA[0m
+[36m  Tx1 Power                                       [0m : [32m0.0000 mW[0m
+[36m  Tx2 Power                                       [0m : [32m0.0000 mW[0m
+[36m  Tx3 Power                                       [0m : [32m0.0000 mW[0m
+[36m  Tx4 Power                                       [0m : [32m0.0000 mW[0m
+[36mControl Status [93]                               [0m : [32m0x04[0m
+[36m  Software Reset                                  [0m : [32mfalse[0m
+[36m  High Power Class 8                              [0m : [32mfalse[0m
+[36m  High Power Classes 5-7                          [0m : [32mfalse[0m
+[36m  Low Power Mode                                  [0m : [32mfalse[0m
 [36mIdentifier [128]                                  [0m : [32m0x11 (QSFP28)[0m
 [36mExtended Identifier [129]                         [0m : [32m0xcf[0m
 [36mExtended Identifier Description                   [0m : [32mPower Class 7

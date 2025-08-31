@@ -1,3 +1,23 @@
+Identifier [0]                                     : 0x11
+Revision Compliance [1]                            : 0x07 (SFF-8636 Rev 2.5, 2.6 and 2.7)
+Channel Monitoring [34-81]                         :
+    Rx1 Power:      0.0000 mW
+    Rx2 Power:      0.0000 mW
+    Rx3 Power:      0.0000 mW
+    Rx4 Power:      0.0000 mW
+    Tx1 Bias:       0.0000 mA
+    Tx2 Bias:       0.0000 mA
+    Tx3 Bias:       0.0000 mA
+    Tx4 Bias:       0.0000 mA
+    Tx1 Power:      0.0000 mW
+    Tx2 Power:      0.0000 mW
+    Tx3 Power:      0.0000 mW
+    Tx4 Power:      0.0000 mW
+Control Status [93]                                : 0x04
+    Software Reset:                 false
+    High Power Class 8 Enabled:     false
+    High Power Classes 5-7 Enabled: false
+    Low Power Mode:                 false
 Identifier [128]                                   : 0x11 (QSFP28)
 Extended Identifier [129]                          : 0xcf
 Extended Identifier Description                    : Power Class 7
