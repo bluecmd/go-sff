@@ -202,39 +202,23 @@ func TestStringOutputs(t *testing.T) {
 		strFile string
 		colFile string
 	}{
-		{
-			name:    "FLEX-P.8596.02",
-			binFile: "testdata/FLEX-P.8596.02.bin",
-			strFile: "testdata/FLEX-P.8596.02.str",
-			colFile: "testdata/FLEX-P.8596.02.col",
-		},
-		{
-			name:    "IN-Q2AY2-35",
-			binFile: "testdata/IN-Q2AY2-35.bin",
-			strFile: "testdata/IN-Q2AY2-35.str",
-			colFile: "testdata/IN-Q2AY2-35.col",
-		},
-		{
-			name:    "JST01TMAC1CY5GEN",
-			binFile: "testdata/JST01TMAC1CY5GEN.bin",
-			strFile: "testdata/JST01TMAC1CY5GEN.str",
-			colFile: "testdata/JST01TMAC1CY5GEN.col",
-		},
-		{
-			name:    "TR-FC85S-N00",
-			binFile: "testdata/TR-FC85S-N00.bin",
-			strFile: "testdata/TR-FC85S-N00.str",
-			colFile: "testdata/TR-FC85S-N00.col",
-		},
-
+		{name: "FLEX-P.8596.02"},
+		{name: "IN-Q2AY2-35"},
+		{name: "JST01TMAC1CY5GEN"},
+		{name: "TR-FC85S-N00"},
+		{name: "FS-DWDM-SFP10G-80"},
+		{name: "PO-HUA-SFP-10G-DWDM"},
 	}
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
 			// Read the EEPROM data file
-			eepromData, err := os.ReadFile(tc.binFile)
+			binFile := fmt.Sprintf("testdata/%s.bin", tc.name)
+			colFile := fmt.Sprintf("testdata/%s.col", tc.name)
+			strFile := fmt.Sprintf("testdata/%s.str", tc.name)
+			eepromData, err := os.ReadFile(binFile)
 			if err != nil {
-				t.Fatalf("Failed to read EEPROM file %s: %v", tc.binFile, err)
+				t.Fatalf("Failed to read EEPROM file %s: %v", binFile, err)
 			}
 
 			// Create a reader and parse the module
@@ -249,20 +233,20 @@ func TestStringOutputs(t *testing.T) {
 				actualOutput := module.String()
 
 				// Check if golden output file exists, if not create it
-				if _, err := os.Stat(tc.strFile); os.IsNotExist(err) {
+				if _, err := os.Stat(strFile); os.IsNotExist(err) {
 					// Create the golden output file
-					err = os.WriteFile(tc.strFile, []byte(actualOutput), 0644)
+					err = os.WriteFile(strFile, []byte(actualOutput), 0644)
 					if err != nil {
-						t.Fatalf("Failed to create golden output file %s: %v", tc.strFile, err)
+						t.Fatalf("Failed to create golden output file %s: %v", strFile, err)
 					}
-					t.Logf("Created golden output file: %s", tc.strFile)
+					t.Logf("Created golden output file: %s", strFile)
 					return
 				}
 
 				// Read expected output and compare
-				expectedBytes, err := os.ReadFile(tc.strFile)
+				expectedBytes, err := os.ReadFile(strFile)
 				if err != nil {
-					t.Fatalf("Failed to read expected output file %s: %v", tc.strFile, err)
+					t.Fatalf("Failed to read expected output file %s: %v", strFile, err)
 				}
 
 				expectedOutput := string(expectedBytes)
@@ -306,20 +290,20 @@ func TestStringOutputs(t *testing.T) {
 				actualOutput := module.StringCol()
 
 				// Check if golden output file exists, if not create it
-				if _, err := os.Stat(tc.colFile); os.IsNotExist(err) {
+				if _, err := os.Stat(colFile); os.IsNotExist(err) {
 					// Create the golden output file
-					err = os.WriteFile(tc.colFile, []byte(actualOutput), 0644)
+					err = os.WriteFile(colFile, []byte(actualOutput), 0644)
 					if err != nil {
-						t.Fatalf("Failed to create golden output file %s: %v", tc.colFile, err)
+						t.Fatalf("Failed to create golden output file %s: %v", colFile, err)
 					}
-					t.Logf("Created golden output file: %s", tc.colFile)
+					t.Logf("Created golden output file: %s", colFile)
 					return
 				}
 
 				// Read expected output and compare
-				expectedBytes, err := os.ReadFile(tc.colFile)
+				expectedBytes, err := os.ReadFile(colFile)
 				if err != nil {
-					t.Fatalf("Failed to read expected output file %s: %v", tc.colFile, err)
+					t.Fatalf("Failed to read expected output file %s: %v", colFile, err)
 				}
 
 				expectedOutput := string(expectedBytes)

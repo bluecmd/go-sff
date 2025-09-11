@@ -61,7 +61,7 @@ func Decode(eeprom []byte) (*Sff8079, error) {
 		return nil, fmt.Errorf("eeprom size to small needs to be 256 bytes or larger got: %d bytes", len(eeprom))
 	}
 
-	if (eeprom[0] == 2 || eeprom[0] == 3) && eeprom[1] == 4 {
+	if (eeprom[0] == 2 || eeprom[0] == 3 || eeprom[0] == 0xb) && eeprom[1] == 4 {
 		sff := (*Sff8079)(unsafe.Pointer(&eeprom[0]))
 		return sff, nil
 	}

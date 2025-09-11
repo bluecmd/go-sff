@@ -1,0 +1,22 @@
+[36mIdentifier [0]                                    [0m : [32m0x03 (SFP)[0m
+[36mExtended Identifier [1]                           [0m : [32m0x04 (GBIC/SFP defined by 2-wire interface ID)[0m
+[36mConnector [2]                                     [0m : [32m0x07 (LC)[0m
+[36mTransceiver Codes [3-10]                          [0m : [32m0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00[0m
+[36mEncoding [11]                                     [0m : [32m0x06 (64B/66B)[0m
+[36mBR, Nominal [12]                                  [0m : [32m11100 Mb/s[0m
+[36mRate Identifier [13]                              [0m : [32m0x00[0m
+[36mLength (SMF) [14]                                 [0m : [32m80 km[0m
+[36mLength (SMF) [15]                                 [0m : [32m0 m[0m
+[36mLength (50um) [16]                                [0m : [32m0 m[0m
+[36mLength (62.5um) [17]                              [0m : [32m0 m[0m
+[36mLength (Copper) [18]                              [0m : [32m0 m[0m
+[36mLength (OM3) [19]                                 [0m : [32m0 m[0m
+[36mVendor [20-35]                                    [0m : [32mFIBERSTORE[0m
+[36mVendor OUI [37-39]                                [0m : [32m0:0:e[0m
+[36mVendor PN [40-55]                                 [0m : [32mDWDM-SFP10G-80[0m
+[36mVendor Rev [56-59]                                [0m : [32m0001[0m
+[36mOption Values [64-65]                             [0m : [32mPower Level 1, Cooled Transceiver, Linear Receiver Output, TX Disable, TX Fault, Loss of Signal (Standard)[0m
+[36mBR Margin, Max [66]                               [0m : [32m0 %[0m
+[36mBR Margin, Min [67]                               [0m : [32m0 %[0m
+[36mVendor SN [68-83]                                 [0m : [32mD87C3000362[0m
+[36mDate Code [84-91]                                 [0m : [32m2018-01-03[0m

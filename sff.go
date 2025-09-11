@@ -56,7 +56,9 @@ func GetType(eeprom []byte) (Type, error) {
 		return TypeUnknown, fmt.Errorf("eeprom size to small needs to be 256 bytes or larger got: %d bytes", len(eeprom))
 	}
 
-	if (eeprom[0] == 2 || eeprom[0] == 3) && eeprom[1] == 4 {
+	// 0xB is "DWDM-SFP/SFP+ (not using SFF-8472)" so technically it shouldn't be
+	// compatible with SFF-8079 but in reality it seems to be.
+	if (eeprom[0] == 2 || eeprom[0] == 3 || eeprom[0] == 0xb) && eeprom[1] == 4 {
 		return TypeSff8079, nil
 	}
 

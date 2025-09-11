@@ -1,0 +1,23 @@
+Identifier [0]                                     : 0x03 (SFP)
+Extended Identifier [1]                            : 0x04 (GBIC/SFP defined by 2-wire interface ID)
+Connector [2]                                      : 0x07 (LC)
+Transceiver Codes [3-10]                           : 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00
+Transceiver Type                                   : 
+Encoding [11]                                      : 0x06 (64B/66B)
+BR, Nominal [12]                                   : 11100 Mb/s
+Rate Identifier [13]                               : 0x00
+Length (SMF) [14]                                  : 80 km
+Length (SMF) [15]                                  : 0 m
+Length (50um) [16]                                 : 0 m
+Length (62.5um) [17]                               : 0 m
+Length (Copper) [18]                               : 0 m
+Length (OM3) [19]                                  : 0 m
+Vendor [20-35]                                     : FIBERSTORE
+Vendor OUI [37-39]                                 : 0:0:e
+Vendor PN [40-55]                                  : DWDM-SFP10G-80
+Vendor Rev [56-59]                                 : 0001
+Option Values [64-65]                              : Power Level 1, Cooled Transceiver, Linear Receiver Output, TX Disable, TX Fault, Loss of Signal (Standard)
+BR Margin, Max [66]                                : 0 %
+BR Margin, Min [67]                                : 0 %
+Vendor SN [68-83]                                  : D87C3000362
+Date Code [84-91]                                  : 2018-01-03
