@@ -20,3 +20,8 @@
 [36mBR Margin, Min [67]                               [0m : [32m0 %[0m
 [36mVendor SN [68-83]                                 [0m : [32mD87C3000362[0m
 [36mDate Code [84-91]                                 [0m : [32m2018-01-03[0m
+[36mTemperature [A2h 96-97]                           [0m : [32m33.645 °C[0m
+[36mVcc [A2h 98-99]                                   [0m : [32m3.3479 V[0m
+[36mTX Bias [A2h 100-101]                             [0m : [32m67.434 mA[0m
+[36mTX Power [A2h 102-103]                            [0m : [32m1.1105 mW (0.46 dBm)[0m
+[36mRX Power [A2h 104-105]                            [0m : [32m0.0956 mW (-10.20 dBm)[0m

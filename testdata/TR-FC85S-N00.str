@@ -1,18 +1,18 @@
 Identifier [0]                                     : 0x11
 Revision Compliance [1]                            : 0x07 (SFF-8636 Rev 2.5, 2.6 and 2.7)
 Channel Monitoring [34-81]                         :
-    Rx1 Power:      0.7981 mW
-    Rx2 Power:      0.8276 mW
-    Rx3 Power:      0.8123 mW
-    Rx4 Power:      0.8783 mW
-    Tx1 Bias:       5.7860 mA
-    Tx2 Bias:       5.4680 mA
-    Tx3 Bias:       5.5320 mA
-    Tx4 Bias:       5.4680 mA
-    Tx1 Power:      1.1083 mW
-    Tx2 Power:      1.0740 mW
-    Tx3 Power:      1.1618 mW
-    Tx4 Power:      1.0206 mW
+    Rx1 Power:      0.7981 mW (-0.98 dBm)
+    Rx2 Power:      0.8276 mW (-0.82 dBm)
+    Rx3 Power:      0.8123 mW (-0.90 dBm)
+    Rx4 Power:      0.8783 mW (-0.56 dBm)
+    Tx1 Bias:       5.786 mA
+    Tx2 Bias:       5.468 mA
+    Tx3 Bias:       5.532 mA
+    Tx4 Bias:       5.468 mA
+    Tx1 Power:      1.1083 mW (0.45 dBm)
+    Tx2 Power:      1.0740 mW (0.31 dBm)
+    Tx3 Power:      1.1618 mW (0.65 dBm)
+    Tx4 Power:      1.0206 mW (0.09 dBm)
 Control Status [93]                                : 0x00
     Software Reset:                 false
     High Power Class 8 Enabled:     false

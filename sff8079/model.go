@@ -54,11 +54,19 @@ type Sff8079 struct {
 	VendorAristaSa  byte                `json:"vendorSa"`       // 120 Vendor Arista SA
 	VendorSpec2     [7]byte             `json:"-"`              // 121-127 - Vendor Specific 2
 	Reserved        [128]byte           `json:"-"`              // 128-255 - Reserved
+	// Address A2h
+	A2hReserved0 [96]byte                 `json:"-"`           // 0-95 - Reserved
+	Temperature  common.TemperatureQ8_8BE `json:"temperature"` // 96-97 - Internally measured module temperature
+	Vcc          common.VoltageVoltBE     `json:"vcc"`         // 98-99 - Internally measured supply voltage in transceiver
+	TxBias       common.CurrentMilliAmpBE `json:"txBias"`      // 100-101 - Internally measured TX Bias Current
+	TxPower      common.PowerMilliWattBE  `json:"txPower"`     // 102-103 - Measured TX output power
+	RxPower      common.PowerMilliWattBE  `json:"rxPower"`     // 104-105 - Measured RX input power
+	A2hReserved1 [22]byte                 `json:"-"`           // 106-127 - Reserved
 }
 
 func Decode(eeprom []byte) (*Sff8079, error) {
-	if len(eeprom) < 256 {
-		return nil, fmt.Errorf("eeprom size to small needs to be 256 bytes or larger got: %d bytes", len(eeprom))
+	if len(eeprom) < 512 {
+		return nil, fmt.Errorf("eeprom size to small needs to be 512 bytes or larger got: %d bytes", len(eeprom))
 	}
 
 	if (eeprom[0] == 2 || eeprom[0] == 3 || eeprom[0] == 0xb) && eeprom[1] == 4 {
@@ -97,6 +105,13 @@ func (s *Sff8079) String() string {
 	if s.Vendor.String() == "Arista Networks" && strings.HasPrefix(s.VendorPn.String(), "CAB-Q-S-") {
 		str += fmt.Sprintf("%-50s : %x\n", "Vendor SA [120]", s.VendorAristaSa)
 	}
+
+	// Address A2h diagnostics
+	str += fmt.Sprintf("%-50s : %s\n", "Temperature [A2h 96-97]", s.Temperature) +
+		fmt.Sprintf("%-50s : %s\n", "Vcc [A2h 98-99]", s.Vcc) +
+		fmt.Sprintf("%-50s : %s\n", "TX Bias [A2h 100-101]", s.TxBias) +
+		fmt.Sprintf("%-50s : %s\n", "TX Power [A2h 102-103]", s.TxPower) +
+		fmt.Sprintf("%-50s : %s\n", "RX Power [A2h 104-105]", s.RxPower)
 
 	return str
 }
@@ -145,6 +160,13 @@ func (s *Sff8079) StringCol() string {
 	if s.Vendor.String() == "Arista Networks" && strings.HasPrefix(s.VendorPn.String(), "CAB-Q-S-") {
 		str += strCol("Vendor SA [120]", fmt.Sprintf("%x", s.VendorAristaSa), cyan, green)
 	}
+
+	// Address A2h diagnostics
+	str += strCol("Temperature [A2h 96-97]", s.Temperature.String(), cyan, green) +
+		strCol("Vcc [A2h 98-99]", s.Vcc.String(), cyan, green) +
+		strCol("TX Bias [A2h 100-101]", s.TxBias.String(), cyan, green) +
+		strCol("TX Power [A2h 102-103]", s.TxPower.String(), cyan, green) +
+		strCol("RX Power [A2h 104-105]", s.RxPower.String(), cyan, green)
 
 	return str
 }

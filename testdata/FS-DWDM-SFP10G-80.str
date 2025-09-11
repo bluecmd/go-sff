@@ -21,3 +21,8 @@ BR Margin, Max [66]                                : 0 %
 BR Margin, Min [67]                                : 0 %
 Vendor SN [68-83]                                  : D87C3000362
 Date Code [84-91]                                  : 2018-01-03
+Temperature [A2h 96-97]                            : 33.645 °C
+Vcc [A2h 98-99]                                    : 3.3479 V
+TX Bias [A2h 100-101]                              : 67.434 mA
+TX Power [A2h 102-103]                             : 1.1105 mW (0.46 dBm)
+RX Power [A2h 104-105]                             : 0.0956 mW (-10.20 dBm)

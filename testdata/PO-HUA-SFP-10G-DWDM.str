@@ -21,3 +21,8 @@ BR Margin, Max [66]                                : 0 %
 BR Margin, Min [67]                                : 0 %
 Vendor SN [68-83]                                  : INEBA0060061
 Date Code [84-91]                                  : 2016-06-21
+Temperature [A2h 96-97]                            : 34.512 °C
+Vcc [A2h 98-99]                                    : 3.3722 V
+TX Bias [A2h 100-101]                              : 86.376 mA
+TX Power [A2h 102-103]                             : 1.4250 mW (1.54 dBm)
+RX Power [A2h 104-105]                             : 0.0331 mW (-14.80 dBm)

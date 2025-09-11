@@ -21,3 +21,8 @@ BR Margin, Max [66]                                : 10 %
 BR Margin, Min [67]                                : 4 %
 Vendor SN [68-83]                                  : FE385518002A
 Date Code [84-91]                                  : 2014-09-17
+Temperature [A2h 96-97]                            : 19.492 °C
+Vcc [A2h 98-99]                                    : 3.3596 V
+TX Bias [A2h 100-101]                              : 36.070 mA
+TX Power [A2h 102-103]                             : 0.9997 mW (-0.00 dBm)
+RX Power [A2h 104-105]                             : 0.2028 mW (-6.93 dBm)

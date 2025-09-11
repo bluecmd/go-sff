@@ -134,7 +134,7 @@ func TestModuleString(t *testing.T) {
 // Helper functions to create test EEPROM data
 
 func createSff8079Eeprom() []byte {
-	eeprom := make([]byte, 256)
+	eeprom := make([]byte, 512)
 
 	// SFF-8079 identifier (SFP)
 	eeprom[0] = 0x03 // SFP identifier
@@ -165,7 +165,7 @@ func createSff8079Eeprom() []byte {
 }
 
 func createSff8636Eeprom() []byte {
-	eeprom := make([]byte, 256)
+	eeprom := make([]byte, 512)
 
 	// SFF-8636 identifier (QSFP) at byte 128
 	eeprom[128] = 0x0C // QSFP identifier

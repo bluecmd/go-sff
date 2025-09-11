@@ -3,6 +3,8 @@ package sff8636
 import (
 	"testing"
 	"unsafe"
+
+	"github.com/bluecmd/go-sff/common"
 )
 
 func TestRevisionCompliance(t *testing.T) {
@@ -26,37 +28,31 @@ func TestRevisionCompliance(t *testing.T) {
 
 func TestChannelMonitoring(t *testing.T) {
 	cm := &ChannelMonitoring{
-		Rx1Power: [2]byte{0x00, 0x64}, // 100 in decimal
-		Rx2Power: [2]byte{0x00, 0xC8}, // 200 in decimal
-		Tx1Bias:  [2]byte{0x00, 0x32}, // 50 in decimal
-		Tx1Power: [2]byte{0x00, 0x96}, // 150 in decimal
+		Rx1Power: common.PowerMilliWattBE{0x00, 0x64},  // 100 in decimal
+		Rx2Power: common.PowerMilliWattBE{0x00, 0xC8},  // 200 in decimal
+		Tx1Bias:  common.CurrentMilliAmpBE{0x00, 0x32}, // 50 in decimal
+		Tx1Power: common.PowerMilliWattBE{0x00, 0x96},  // 150 in decimal
 	}
 
-	// Test Rx power calculations
-	if power := cm.GetRxPower(1); power != 0.0100 { // 100 * 0.0001
-		t.Errorf("GetRxPower(1) = %f, want 0.0100", power)
+	// Test Rx power calculations via underlying methods
+	if mw := cm.Rx1Power.MilliWatt(); mw != 0.0100 { // 100 * 0.0001
+		t.Errorf("Rx1Power.MilliWatt() = %f, want 0.0100", mw)
 	}
-	if power := cm.GetRxPower(2); power != 0.0200 { // 200 * 0.0001
-		t.Errorf("GetRxPower(2) = %f, want 0.0200", power)
-	}
-
-	// Test Tx bias calculations
-	if bias := cm.GetTxBias(1); bias != 0.1000 { // 50 * 0.002
-		t.Errorf("GetTxBias(1) = %f, want 0.1000", bias)
+	if mw := cm.Rx2Power.MilliWatt(); mw != 0.0200 { // 200 * 0.0001
+		t.Errorf("Rx2Power.MilliWatt() = %f, want 0.0200", mw)
 	}
 
-	// Test Tx power calculations
-	if power := cm.GetTxPower(1); power < 0.0149 || power > 0.0151 { // 150 * 0.0001 with tolerance
-		t.Errorf("GetTxPower(1) = %f, want 0.0150 ± 0.0001", power)
+	// Test Tx bias calculations via underlying methods
+	if ma := cm.Tx1Bias.MilliAmp(); ma != 0.1000 { // 50 * 0.002
+		t.Errorf("Tx1Bias.MilliAmp() = %f, want 0.1000", ma)
 	}
 
-	// Test invalid channel
-	if power := cm.GetRxPower(0); power != 0.0 {
-		t.Errorf("GetRxPower(0) = %f, want 0.0", power)
+	// Test Tx power calculations via underlying methods
+	if mw := cm.Tx1Power.MilliWatt(); mw < 0.0149 || mw > 0.0151 { // 150 * 0.0001 with tolerance
+		t.Errorf("Tx1Power.MilliWatt() = %f, want 0.0150 ± 0.0001", mw)
 	}
-	if power := cm.GetRxPower(5); power != 0.0 {
-		t.Errorf("GetRxPower(5) = %f, want 0.0", power)
-	}
+
+	// Test invalid channel no longer applicable as getters removed
 }
 
 func TestControlStatus(t *testing.T) {

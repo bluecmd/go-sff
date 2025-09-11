@@ -52,8 +52,8 @@ func (m *Module) StringCol() string {
 }
 
 func GetType(eeprom []byte) (Type, error) {
-	if len(eeprom) < 256 {
-		return TypeUnknown, fmt.Errorf("eeprom size to small needs to be 256 bytes or larger got: %d bytes", len(eeprom))
+	if len(eeprom) < 512 {
+		return TypeUnknown, fmt.Errorf("eeprom size to small needs to be 512 bytes or larger got: %d bytes", len(eeprom))
 	}
 
 	// 0xB is "DWDM-SFP/SFP+ (not using SFF-8472)" so technically it shouldn't be
@@ -88,7 +88,7 @@ func (r *I2CReader) Read() ([]byte, error) {
 	}
 	defer i.Close()
 	i.Write([]byte{0x00})
-	b := make([]byte, 256)
+	b := make([]byte, 512)
 	i.Read(b)
 	return b, nil
 }
@@ -111,15 +111,15 @@ func (r *FileReader) Read() ([]byte, error) {
 	}
 	defer file.Close()
 
-	b := make([]byte, 256)
+	b := make([]byte, 512)
 	n, err := file.Read(b)
 	if err != nil {
 		return nil, err
 	}
 
-	// If we read less than 256 bytes, pad with zeros
-	if n < 256 {
-		for i := n; i < 256; i++ {
+	// If we read less than 512 bytes, pad with zeros
+	if n < 512 {
+		for i := n; i < 512; i++ {
 			b[i] = 0
 		}
 	}
