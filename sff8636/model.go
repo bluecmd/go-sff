@@ -46,7 +46,7 @@ type Sff8636 struct {
 	LengthOm2         common.ValueM       `json:"lengthOm2"`        // 144 - Length (OM2 50 um)
 	LengthOm1         common.ValueM       `json:"lengthOm1"`        // 145 - Length (OM1 62.5 um) or Copper Cable Attenuation
 	LengthCopper      common.ValueM       `json:"lengthCopper"`     // 146 - Length (passive copper or active cable or OM4 50 um)
-	DevTech           byte                `json:"-"`                // 147 - Device technology
+	DevTech           DeviceTechnology    `json:"devTech"`          // 147 - Device technology
 	Vendor            common.String16     `json:"vendor"`           // 148-163 - Vendor name
 	ExtModule         byte                `json:"-"`                // 164 - Extended Module
 	VendorOui         common.VendorOUI    `json:"vendorOui"`        // 165-167 - Vendor OUI
@@ -102,6 +102,7 @@ func (s *Sff8636) String() string {
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Length (OM2 50um) [144]", s.LengthOm2))
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Length (OM1 62.5um) [145]", s.LengthOm1))
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Length (Copper or Active cable) [146]", s.LengthCopper))
+	result.WriteString(fmt.Sprintf("%-50s :\n%s\n", "Device Technology [147]", s.DevTech))
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Vendor [148-163]", s.Vendor))
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Vendor OUI [165-167]", s.VendorOui))
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Vendor PN [168-183]", s.VendorPn))
@@ -166,6 +167,12 @@ func (s *Sff8636) StringCol() string {
 	result.WriteString(strCol("Length (OM2 50um) [144]", s.LengthOm2.String(), cyan, green))
 	result.WriteString(strCol("Length (OM1 62.5um) [145]", s.LengthOm1.String(), cyan, green))
 	result.WriteString(strCol("Length (Copper or Active cable) [146]", s.LengthCopper.String(), cyan, green))
+	result.WriteString(strCol("Device Technology [147]", "", cyan, yellow))
+	result.WriteString(strCol("  Active wavelength control (bit 3)", fmt.Sprintf("%t", s.DevTech.HasActiveWavelengthControl()), cyan, green))
+	result.WriteString(strCol("  Cooled Transmitter (bit 2)", fmt.Sprintf("%t", s.DevTech.HasCooledTransmitter()), cyan, green))
+	result.WriteString(strCol("  Detector Type (bit 1)", s.DevTech.GetDetectorType(), cyan, green))
+	result.WriteString(strCol("  Transmitter Type (bits 7-4)", s.DevTech.GetTransmitterTechnologyName(), cyan, green))
+	result.WriteString(strCol("  Tunable Transmitter (bit 0)", fmt.Sprintf("%t", s.DevTech.IsTunableTransmitter()), cyan, green))
 	result.WriteString(strCol("Vendor [148-163]", s.Vendor.String(), cyan, green))
 	result.WriteString(strCol("Vendor OUI [165-167]", s.VendorOui.String(), cyan, green))
 	result.WriteString(strCol("Vendor PN [168-183]", s.VendorPn.String(), cyan, green))

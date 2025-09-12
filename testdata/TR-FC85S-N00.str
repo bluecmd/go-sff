@@ -37,6 +37,13 @@ Length (OM3 50um) [143]                            : 35 m
 Length (OM2 50um) [144]                            : 0 m
 Length (OM1 62.5um) [145]                          : 0 m
 Length (Copper or Active cable) [146]              : 50 m
+Device Technology [147]                            :
+Device Tech (00h:147):
+    Active wavelength control (bit 3): false
+    Cooled Transmitter (bit 2): false
+    Detector Type (bit 1): Pin
+    Transmitter Type (bits 7-4): 850 nm VCSEL
+    Tunable Transmitter (bit 0): false
 Vendor [148-163]                                   : INNOLIGHT
 Vendor OUI [165-167]                               : 44:7c:7f
 Vendor PN [168-183]                                : TR-FC85S-N00

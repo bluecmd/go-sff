@@ -36,6 +36,12 @@
 [36mLength (OM2 50um) [144]                           [0m : [32m0 m[0m
 [36mLength (OM1 62.5um) [145]                         [0m : [32m0 m[0m
 [36mLength (Copper or Active cable) [146]             [0m : [32m0 m[0m
+[36mDevice Technology [147]                           [0m : [33m[0m
+[36m  Active wavelength control (bit 3)               [0m : [32mtrue[0m
+[36m  Cooled Transmitter (bit 2)                      [0m : [32mtrue[0m
+[36m  Detector Type (bit 1)                           [0m : [32mPin[0m
+[36m  Transmitter Type (bits 7-4)                     [0m : [32m1550 nm DFB[0m
+[36m  Tunable Transmitter (bit 0)                     [0m : [32mfalse[0m
 [36mVendor [148-163]                                  [0m : [32mINPHI CORP[0m
 [36mVendor OUI [165-167]                              [0m : [32m0:21:b8[0m
 [36mVendor PN [168-183]                               [0m : [32mIN-Q2AY2-35[0m

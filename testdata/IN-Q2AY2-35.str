@@ -37,6 +37,13 @@ Length (OM3 50um) [143]                            : 0 m
 Length (OM2 50um) [144]                            : 0 m
 Length (OM1 62.5um) [145]                          : 0 m
 Length (Copper or Active cable) [146]              : 0 m
+Device Technology [147]                            :
+Device Tech (00h:147):
+    Active wavelength control (bit 3): true
+    Cooled Transmitter (bit 2): true
+    Detector Type (bit 1): Pin
+    Transmitter Type (bits 7-4): 1550 nm DFB
+    Tunable Transmitter (bit 0): false
 Vendor [148-163]                                   : INPHI CORP
 Vendor OUI [165-167]                               : 0:21:b8
 Vendor PN [168-183]                                : IN-Q2AY2-35
