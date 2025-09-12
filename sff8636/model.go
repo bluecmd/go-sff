@@ -34,37 +34,37 @@ type Sff8636 struct {
 	_                  [34]byte                 `json:"-"`                  // Bytes 94-127
 
 	// Page 01h (Bytes 128-255)
-	IdentifierPage01  common.Identifier            `json:"identifierPage01"`  // 128 - Identifier
-	ExtIdentifier     ExtIdentifier                `json:"extIdentifier"`     // 129 - Ext. Identifier
-	Connector         common.Connector             `json:"connector"`         // 130 - Connector Type
-	Transceiver       Transceiver                  `json:"transceiver"`       // 131-138 - Specification Compliance
-	Encoding          Encoding                     `json:"encoding"`          // 139 - Encoding
-	BrNominal         common.Value100Mbps          `json:"brNominal"`         // 140 - BR, nominal
-	RateIdentifier    byte                         `json:"rateIdentifier"`    // 141 - Extended Rate Select Compliance
-	LengthSmf         common.ValueKm               `json:"lengthSmf"`         // 142 - Length (SMF)
-	LengthOm3         common.ValueM                `json:"lengthOm3"`         // 143 - Length (OM3 50 um)
-	LengthOm2         common.ValueM                `json:"lengthOm2"`         // 144 - Length (OM2 50 um)
-	LengthOm1         common.ValueM                `json:"lengthOm1"`         // 145 - Length (OM1 62.5 um) or Copper Cable Attenuation
-	LengthCopper      common.ValueM                `json:"lengthCopper"`      // 146 - Length (passive copper or active cable or OM4 50 um)
-	DevTech           DeviceTechnology             `json:"devTech"`           // 147 - Device technology
-	Vendor            common.String16              `json:"vendor"`            // 148-163 - Vendor name
-	ExtModule         byte                         `json:"-"`                 // 164 - Extended Module
-	VendorOui         common.VendorOUI             `json:"vendorOui"`         // 165-167 - Vendor OUI
-	VendorPn          common.String16              `json:"vendorPn"`          // 168-183 - Vendor PN
-	VendorRev         common.String2               `json:"vendorRev"`         // 184-185 - Vendor rev
-	LaserWavelen      common.WavelengthNanometerBE `json:"laserWavelen"`      // 186-187 - Wavelength or Copper Cable Attenuation
-	LaserWavelenToler common.WavelengthNanometerBE `json:"laserWavelenToler"` // 188-189 - Wavelength tolerance or Copper Cable Attenuation
-	MaxCaseTempC      byte                         `json:"-"`                 // 190 - Max case temp.
-	CcBase            byte                         `json:"-"`                 // 191 - CC_BASE
-	LinkCodes         LinkCodes                    `json:"linkCodes"`         // 192 - Link codes
-	Options           Options                      `json:"options"`           // 193-195 - Options
-	VendorSn          common.String16              `json:"vendorSn"`          // 196-211 - Vendor SN
-	DateCode          common.DateCode              `json:"dateCode"`          // 212-219 - Date Code
-	DiagMonType       byte                         `json:"-"`                 // 220 - Diagnostic Monitoring Type
-	EnhOptions        EnhancedOptions              `json:"enhancedOptions"`   // 221 - Enhanced Options
-	BrNominalExt      byte                         `json:"-"`                 // 222 - BR, Nominal
-	CcExt             byte                         `json:"-"`                 // 223 - CC_EXT
-	VendorSpec        [32]byte                     `json:"-"`                 // 224-255 - Vendor Specific
+	IdentifierPage01  common.Identifier            `json:"identifierPage01"`         // 128 - Identifier
+	ExtIdentifier     ExtIdentifier                `json:"extIdentifier"`            // 129 - Ext. Identifier
+	Connector         common.Connector             `json:"connector"`                // 130 - Connector Type
+	Transceiver       Transceiver                  `json:"transceiver"`              // 131-138 - Specification Compliance
+	Encoding          Encoding                     `json:"encoding"`                 // 139 - Encoding
+	BrNominal         common.Value100Mbps          `json:"brNominal"`                // 140 - BR, nominal
+	RateIdentifier    byte                         `json:"rateIdentifier"`           // 141 - Extended Rate Select Compliance
+	LengthSmf         common.ValueKm               `json:"lengthSmf"`                // 142 - Length (SMF)
+	LengthOm3         common.ValueM                `json:"lengthOm3"`                // 143 - Length (OM3 50 um)
+	LengthOm2         common.ValueM                `json:"lengthOm2"`                // 144 - Length (OM2 50 um)
+	LengthOm1         common.ValueM                `json:"lengthOm1"`                // 145 - Length (OM1 62.5 um) or Copper Cable Attenuation
+	LengthCopper      common.ValueM                `json:"lengthCopper"`             // 146 - Length (passive copper or active cable or OM4 50 um)
+	DevTech           DeviceTechnology             `json:"devTech"`                  // 147 - Device technology
+	Vendor            common.String16              `json:"vendor"`                   // 148-163 - Vendor name
+	ExtModule         byte                         `json:"-"`                        // 164 - Extended Module
+	VendorOui         common.VendorOUI             `json:"vendorOui"`                // 165-167 - Vendor OUI
+	VendorPn          common.String16              `json:"vendorPn"`                 // 168-183 - Vendor PN
+	VendorRev         common.String2               `json:"vendorRev"`                // 184-185 - Vendor rev
+	LaserWavelen      common.WavelengthNanometerBE `json:"laserWavelen"`             // 186-187 - Wavelength or Copper Cable Attenuation
+	LaserWavelenToler common.WavelengthNanometerBE `json:"laserWavelenToler"`        // 188-189 - Wavelength tolerance or Copper Cable Attenuation
+	MaxCaseTempC      byte                         `json:"-"`                        // 190 - Max case temp.
+	CcBase            byte                         `json:"-"`                        // 191 - CC_BASE
+	LinkCodes         LinkCodes                    `json:"linkCodes"`                // 192 - Link codes
+	Options           Options                      `json:"options"`                  // 193-195 - Options
+	VendorSn          common.String16              `json:"vendorSn"`                 // 196-211 - Vendor SN
+	DateCode          common.DateCode              `json:"dateCode"`                 // 212-219 - Date Code
+	DiagMonType       DiagnosticMonitoringType     `json:"diagnosticMonitoringType"` // 220 - Diagnostic Monitoring Type
+	EnhOptions        EnhancedOptions              `json:"enhancedOptions"`          // 221 - Enhanced Options
+	BrNominalExt      byte                         `json:"-"`                        // 222 - BR, Nominal
+	CcExt             byte                         `json:"-"`                        // 223 - CC_EXT
+	VendorSpec        [32]byte                     `json:"-"`                        // 224-255 - Vendor Specific
 }
 
 func Decode(eeprom []byte) (*Sff8636, error) {
@@ -110,6 +110,7 @@ func (s *Sff8636) String() string {
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Wavelength [186-187]", s.LaserWavelen))
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "  Tolerance [188-189]", s.LaserWavelenToler))
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Option Values [193-195]", s.Options.String()))
+	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Diagnostic Monitoring Type [220]", s.DiagMonType.String()))
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Enhanced Options [221]", s.EnhOptions.String()))
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Vendor SN [196-211]", s.VendorSn))
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Date Code [212-219]", s.DateCode))
@@ -183,6 +184,7 @@ func (s *Sff8636) StringCol() string {
 	result.WriteString(strCol("Wavelength [186-187]", s.LaserWavelen.String(), cyan, green))
 	result.WriteString(strCol("  Tolerance [188-189]", s.LaserWavelenToler.String(), cyan, green))
 	result.WriteString(strCol("Option Values [193-195]", s.Options.String(), cyan, green))
+	result.WriteString(strCol("Diagnostic Monitoring Type [220]", s.DiagMonType.String(), cyan, green))
 	result.WriteString(strCol("Enhanced Options [221]", s.EnhOptions.String(), cyan, green))
 	result.WriteString(strCol("Vendor SN [196-211]", s.VendorSn.String(), cyan, green))
 	result.WriteString(strCol("Date Code [212-219]", s.DateCode.String(), cyan, green))

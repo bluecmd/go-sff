@@ -49,6 +49,7 @@
 [36mWavelength [186-187]                              [0m : [32m850.0 nm[0m
 [36m  Tolerance [188-189]                             [0m : [32m100.0 nm[0m
 [36mOption Values [193-195]                           [0m : [32mTx input equalizers fixed-programmable, Rx output emphasis fixed-programmable, Rx output amplitude fixed-programmable, Tx CDR On/Off Control, Rx CDR On/Off Control, Tx CDR Loss of Lock flag, Rx CDR Loss of Lock flag, Rx Squelch Disable, Rx Output Disable, Tx Squelch, Memory Page 02 provided, Memory Page 01h provided, Tx_Disable implemented, Tx Squelch reduces OMA, Tx Loss of Signal[0m
+[36mDiagnostic Monitoring Type [220]                  [0m : [32mReceived power measurements type: Average Power, Transmitter power[0m
 [36mEnhanced Options [221]                            [0m : [32mNo enhanced options implemented[0m
 [36mVendor SN [196-211]                               [0m : [32mINKAP3224117[0m
 [36mDate Code [212-219]                               [0m : [32m2020-04-29[0m
