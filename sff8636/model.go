@@ -61,7 +61,7 @@ type Sff8636 struct {
 	VendorSn          common.String16              `json:"vendorSn"`          // 196-211 - Vendor SN
 	DateCode          common.DateCode              `json:"dateCode"`          // 212-219 - Date Code
 	DiagMonType       byte                         `json:"-"`                 // 220 - Diagnostic Monitoring Type
-	EnhOptions        byte                         `json:"-"`                 // 221 - Enhanced Options
+	EnhOptions        EnhancedOptions              `json:"enhancedOptions"`   // 221 - Enhanced Options
 	BrNominalExt      byte                         `json:"-"`                 // 222 - BR, Nominal
 	CcExt             byte                         `json:"-"`                 // 223 - CC_EXT
 	VendorSpec        [32]byte                     `json:"-"`                 // 224-255 - Vendor Specific
@@ -110,6 +110,7 @@ func (s *Sff8636) String() string {
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Wavelength [186-187]", s.LaserWavelen))
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "  Tolerance [188-189]", s.LaserWavelenToler))
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Option Values [193-195]", s.Options.String()))
+	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Enhanced Options [221]", s.EnhOptions.String()))
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Vendor SN [196-211]", s.VendorSn))
 	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Date Code [212-219]", s.DateCode))
 
@@ -182,6 +183,7 @@ func (s *Sff8636) StringCol() string {
 	result.WriteString(strCol("Wavelength [186-187]", s.LaserWavelen.String(), cyan, green))
 	result.WriteString(strCol("  Tolerance [188-189]", s.LaserWavelenToler.String(), cyan, green))
 	result.WriteString(strCol("Option Values [193-195]", s.Options.String(), cyan, green))
+	result.WriteString(strCol("Enhanced Options [221]", s.EnhOptions.String(), cyan, green))
 	result.WriteString(strCol("Vendor SN [196-211]", s.VendorSn.String(), cyan, green))
 	result.WriteString(strCol("Date Code [212-219]", s.DateCode.String(), cyan, green))
 

@@ -49,5 +49,6 @@
 [36mWavelength [186-187]                              [0m : [32m1549.3 nm[0m
 [36m  Tolerance [188-189]                             [0m : [32m0.2 nm[0m
 [36mOption Values [193-195]                           [0m : [32mTx input equalizers auto-adaptive capable, Rx output emphasis fixed-programmable, Rx output amplitude fixed-programmable, Tx CDR Loss of Lock flag, Rx CDR Loss of Lock flag, Rx Output Disable, Tx Squelch, Memory Page 02 provided, Tx_Disable implemented, Tx Squelch reduces Pave[0m
+[36mEnhanced Options [221]                            [0m : [32mInitialization Complete Flag implemented[0m
 [36mVendor SN [196-211]                               [0m : [32mL202100651[0m
 [36mDate Code [212-219]                               [0m : [32m2020-09-21[0m
