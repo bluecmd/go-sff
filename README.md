@@ -175,10 +175,10 @@ i2c.Read(data)
 
 - Go 1.19 or later
 
-## Building the sfputil
+## Building the sfpdiag
 
 ```bash
-make sfputil
+make sfpdiag
 ```
 
 ## Running Tests

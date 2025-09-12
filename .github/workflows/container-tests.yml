@@ -24,5 +24,5 @@ jobs:
     - name: Run tests in container
       run: docker run --rm go-sff-test make test
 
-    - name: Build sfputil in container
-      run: docker run --rm go-sff-test make sfputil
+    - name: Build sfpdiag in container
+      run: docker run --rm go-sff-test make sfpdiag

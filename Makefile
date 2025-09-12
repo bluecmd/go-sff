@@ -1,6 +1,6 @@
-.PHONY: all build test test-container clean sfputil
+.PHONY: all build test test-container clean sfpdiag
 
-all: sfputil
+all: sfpdiag
 
 test:
 	go test ./...
@@ -14,11 +14,11 @@ test-verbose:
 test-coverage:
 	go test -cover ./...
 
-sfputil:
-	CGO_ENABLED=0 go build ./cmd/sfputil/
+sfpdiag:
+	CGO_ENABLED=0 go build ./cmd/sfpdiag/
 
 clean:
-	\rm -f sfputil
+	\rm -f sfpdiag
 
 deps:
 	go mod tidy
