@@ -63,6 +63,9 @@ func GetType(eeprom []byte) (Type, error) {
 	}
 
 	if eeprom[128] == 12 || eeprom[128] == 13 || eeprom[128] == 17 {
+		if eeprom[127] != 0 {
+			return TypeSff8636, fmt.Errorf("upper page is not 00h")
+		}
 		return TypeSff8636, nil
 	}
 
