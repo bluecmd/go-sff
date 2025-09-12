@@ -47,7 +47,7 @@
 [36mVendor PN [168-183]                               [0m : [32mIN-Q2AY2-35[0m
 [36mVendor Rev [184-185]                              [0m : [32m10[0m
 [36mWavelength [186-187]                              [0m : [32m1549.3 nm[0m
-[36m  Tolerance [188-189]                             [0m : [32m0.2 nm[0m
+[36m  Tolerance [188-189]                             [0m : [32m0.0 nm[0m
 [36mOption Values [193-195]                           [0m : [32mTx input equalizers auto-adaptive capable, Rx output emphasis fixed-programmable, Rx output amplitude fixed-programmable, Tx CDR Loss of Lock flag, Rx CDR Loss of Lock flag, Rx Output Disable, Tx Squelch, Memory Page 02 provided, Tx_Disable implemented, Tx Squelch reduces Pave[0m
 [36mDiagnostic Monitoring Type [220]                  [0m : [32mTemperature, Supply voltage, Received power measurements type: Average Power, Transmitter power[0m
 [36mEnhanced Options [221]                            [0m : [32mInitialization Complete Flag implemented[0m

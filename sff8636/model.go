@@ -53,7 +53,7 @@ type Sff8636 struct {
 	VendorPn          common.String16              `json:"vendorPn"`                 // 168-183 - Vendor PN
 	VendorRev         common.String2               `json:"vendorRev"`                // 184-185 - Vendor rev
 	LaserWavelen      common.WavelengthNanometerBE `json:"laserWavelen"`             // 186-187 - Wavelength or Copper Cable Attenuation
-	LaserWavelenToler common.WavelengthNanometerBE `json:"laserWavelenToler"`        // 188-189 - Wavelength tolerance or Copper Cable Attenuation
+	LaserWavelenToler common.ToleranceNanometerBE  `json:"laserWavelenToler"`        // 188-189 - Wavelength tolerance or Copper Cable Attenuation
 	MaxCaseTempC      byte                         `json:"-"`                        // 190 - Max case temp.
 	CcBase            byte                         `json:"-"`                        // 191 - CC_BASE
 	LinkCodes         LinkCodes                    `json:"linkCodes"`                // 192 - Link codes

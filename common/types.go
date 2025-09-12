@@ -628,3 +628,52 @@ func (w *WavelengthNanometerBE) UnmarshalJSON(in []byte) error {
 	*w = WavelengthNanometerBE{b[0], b[1]}
 	return nil
 }
+
+
+// Tolerance encoded as a 16-bit unsigned integer in big-endian byte order.
+// The tolerance is equal to the 16-bit integer value divided by 200 in nm (units of 0.005 nm).
+type ToleranceNanometerBE [2]byte
+
+// Raw returns the underlying unsigned 16-bit value.
+func (w ToleranceNanometerBE) Raw() uint16 {
+	return uint16(w[0])<<8 | uint16(w[1])
+}
+
+// Nanometers returns the wavelength in nanometers.
+func (w ToleranceNanometerBE) Nanometers() float64 {
+	// 1 LSB = 0.005 nm, so divide by 200
+	return float64(w.Raw()) / 200.0
+}
+
+func (w ToleranceNanometerBE) String() string {
+	return fmt.Sprintf("%.1f nm", w.Nanometers())
+}
+
+func (w ToleranceNanometerBE) MarshalJSON() ([]byte, error) {
+	m := map[string]interface{}{
+		"value": w.Nanometers(),
+		"unit":  "nm",
+		"hex":   hex.EncodeToString([]byte{w[0], w[1]}),
+	}
+	return json.Marshal(m)
+}
+
+func (w *ToleranceNanometerBE) UnmarshalJSON(in []byte) error {
+	m := map[string]interface{}{}
+	err := json.Unmarshal(in, &m)
+	if err != nil {
+		return err
+	}
+
+	b, err := hex.DecodeString(m["hex"].(string))
+	if err != nil {
+		return err
+	}
+
+	if len(b) < 2 {
+		return fmt.Errorf("length is shorter then ToleranceNanometerBE type")
+	}
+
+	*w = ToleranceNanometerBE{b[0], b[1]}
+	return nil
+}
