@@ -21,13 +21,17 @@ const (
 
 type Sff8636 struct {
 	// Page 00h (Bytes 0-127)
-	Identifier         byte               `json:"identifier"`         // Byte 0: Identifier
-	RevisionCompliance RevisionCompliance `json:"revisionCompliance"` // Byte 1: Revision Compliance
-	_                  [32]byte           `json:"-"`                  //
-	ChannelMonitoring  ChannelMonitoring  `json:"channelMonitoring"`  // Bytes 34-57: Channel Monitoring
-	_                  [35]byte           `json:"-"`                  //
-	ControlStatus      ControlStatus      `json:"controlStatus"`      // Byte 93: Control and Status
-	_                  [34]byte           `json:"-"`                  //
+	Identifier         byte                     `json:"identifier"`         // Byte 0: Identifier
+	RevisionCompliance RevisionCompliance       `json:"revisionCompliance"` // Byte 1: Revision Compliance
+	_                  [20]byte                 `json:"-"`                  // Bytes 2-21
+	Temperature        common.TemperatureQ8_8BE `json:"temperature"`        // Bytes 22-23: Temperature
+	_                  [2]byte                  `json:"-"`                  // Bytes 24-25
+	SupplyVoltage      common.VoltageVoltBE     `json:"supplyVoltage"`      // Bytes 26-27: Supply Voltage
+	_                  [6]byte                  `json:"-"`                  // Bytes 28-33
+	ChannelMonitoring  ChannelMonitoring        `json:"channelMonitoring"`  // Bytes 34-57: Channel Monitoring
+	_                  [35]byte                 `json:"-"`                  // Bytes 58-92
+	ControlStatus      ControlStatus            `json:"controlStatus"`      // Byte 93: Control and Status
+	_                  [34]byte                 `json:"-"`                  // Bytes 94-127
 
 	// Page 01h (Bytes 128-255)
 	IdentifierPage01  common.Identifier   `json:"identifierPage01"` // 128 - Identifier
@@ -81,6 +85,8 @@ func (s *Sff8636) String() string {
 	result.WriteString(fmt.Sprintf("%-50s : 0x%02x\n", "Identifier [0]", s.Identifier))
 	result.WriteString(fmt.Sprintf("%-50s : 0x%02x (%s)\n", "Revision Compliance [1]", byte(s.RevisionCompliance), s.RevisionCompliance))
 	result.WriteString(fmt.Sprintf("%-50s :\n%s\n", "Channel Monitoring [34-81]", s.ChannelMonitoring.String()))
+	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Temperature [22-23]", s.Temperature))
+	result.WriteString(fmt.Sprintf("%-50s : %s\n", "Supply Voltage [26-27]", s.SupplyVoltage))
 	result.WriteString(fmt.Sprintf("%-50s : 0x%02x\n%s\n", "Control Status [93]", byte(s.ControlStatus), s.ControlStatus))
 	result.WriteString(fmt.Sprintf("%-50s : 0x%02x (%s)\n", "Identifier [128]", byte(s.IdentifierPage01), s.IdentifierPage01))
 	result.WriteString(fmt.Sprintf("%-50s : 0x%02x\n", "Extended Identifier [129]", byte(s.ExtIdentifier)))
@@ -139,6 +145,8 @@ func (s *Sff8636) StringCol() string {
 	result.WriteString(strCol("  Tx2 Power", s.ChannelMonitoring.Tx2Power.String(), cyan, green))
 	result.WriteString(strCol("  Tx3 Power", s.ChannelMonitoring.Tx3Power.String(), cyan, green))
 	result.WriteString(strCol("  Tx4 Power", s.ChannelMonitoring.Tx4Power.String(), cyan, green))
+	result.WriteString(strCol("Temperature [22-23]", s.Temperature.String(), cyan, green))
+	result.WriteString(strCol("Supply Voltage [26-27]", s.SupplyVoltage.String(), cyan, green))
 	result.WriteString(strCol("Control Status [93]", fmt.Sprintf("0x%02x", byte(s.ControlStatus)), cyan, green))
 	result.WriteString(strCol("  Software Reset", fmt.Sprintf("%t", s.ControlStatus.IsSoftwareReset()), cyan, green))
 	result.WriteString(strCol("  High Power Class 8", fmt.Sprintf("%t", s.ControlStatus.IsHighPowerClass8Enabled()), cyan, green))

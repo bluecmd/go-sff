@@ -13,6 +13,8 @@ Channel Monitoring [34-81]                         :
     Tx2 Power:      0.0000 mW (-inf dBm)
     Tx3 Power:      0.0000 mW (-inf dBm)
     Tx4 Power:      0.0000 mW (-inf dBm)
+Temperature [22-23]                                : 0.000 °C
+Supply Voltage [26-27]                             : 3.4191 V
 Control Status [93]                                : 0x04
     Software Reset:                 false
     High Power Class 8 Enabled:     false
