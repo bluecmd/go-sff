@@ -48,6 +48,8 @@ Vendor [148-163]                                   : INNOLIGHT
 Vendor OUI [165-167]                               : 44:7c:7f
 Vendor PN [168-183]                                : TR-FC85S-N00
 Vendor Rev [184-185]                               : 1A
+Wavelength [186-187]                               : 850.0 nm
+  Tolerance [188-189]                              : 100.0 nm
 Option Values [193-195]                            : Tx input equalizers fixed-programmable, Rx output emphasis fixed-programmable, Rx output amplitude fixed-programmable, Tx CDR On/Off Control, Rx CDR On/Off Control, Tx CDR Loss of Lock flag, Rx CDR Loss of Lock flag, Rx Squelch Disable, Rx Output Disable, Tx Squelch, Memory Page 02 provided, Memory Page 01h provided, Tx_Disable implemented, Tx Squelch reduces OMA, Tx Loss of Signal
 Vendor SN [196-211]                                : INKAP3224117
 Date Code [212-219]                                : 2020-04-29

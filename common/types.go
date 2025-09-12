@@ -579,3 +579,52 @@ func (d *DateCode) UnmarshalJSON(in []byte) error {
 	}
 	return nil
 }
+
+// Wavelength encoded as a 16-bit unsigned integer in big-endian byte order.
+// The laser wavelength is equal to the 16-bit integer value divided by 20 in nm (units of 0.05 nm).
+// Range: 0 to 3276.75 nm with granularity of 0.05 nm.
+type WavelengthNanometerBE [2]byte
+
+// Raw returns the underlying unsigned 16-bit value.
+func (w WavelengthNanometerBE) Raw() uint16 {
+	return uint16(w[0])<<8 | uint16(w[1])
+}
+
+// Nanometers returns the wavelength in nanometers.
+func (w WavelengthNanometerBE) Nanometers() float64 {
+	// 1 LSB = 0.05 nm, so divide by 20
+	return float64(w.Raw()) / 20.0
+}
+
+func (w WavelengthNanometerBE) String() string {
+	return fmt.Sprintf("%.1f nm", w.Nanometers())
+}
+
+func (w WavelengthNanometerBE) MarshalJSON() ([]byte, error) {
+	m := map[string]interface{}{
+		"value": w.Nanometers(),
+		"unit":  "nm",
+		"hex":   hex.EncodeToString([]byte{w[0], w[1]}),
+	}
+	return json.Marshal(m)
+}
+
+func (w *WavelengthNanometerBE) UnmarshalJSON(in []byte) error {
+	m := map[string]interface{}{}
+	err := json.Unmarshal(in, &m)
+	if err != nil {
+		return err
+	}
+
+	b, err := hex.DecodeString(m["hex"].(string))
+	if err != nil {
+		return err
+	}
+
+	if len(b) < 2 {
+		return fmt.Errorf("length is shorter then WavelengthNanometerBE type")
+	}
+
+	*w = WavelengthNanometerBE{b[0], b[1]}
+	return nil
+}

@@ -48,6 +48,8 @@ Vendor [148-163]                                   : INPHI CORP
 Vendor OUI [165-167]                               : 0:21:b8
 Vendor PN [168-183]                                : IN-Q2AY2-35
 Vendor Rev [184-185]                               : 10
+Wavelength [186-187]                               : 1549.3 nm
+  Tolerance [188-189]                              : 0.2 nm
 Option Values [193-195]                            : Tx input equalizers auto-adaptive capable, Rx output emphasis fixed-programmable, Rx output amplitude fixed-programmable, Tx CDR Loss of Lock flag, Rx CDR Loss of Lock flag, Rx Output Disable, Tx Squelch, Memory Page 02 provided, Tx_Disable implemented, Tx Squelch reduces Pave
 Vendor SN [196-211]                                : L202100651
 Date Code [212-219]                                : 2020-09-21
